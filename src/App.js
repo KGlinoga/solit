@@ -1,13 +1,13 @@
 import React from "react";
-import './components/List';
-import ActionAreaCard from './components/List';
-import ResponsiveAppBar from "./components/header";
+import ResponsiveAppBar from "./components/Header";
+import NYTListContainer from "./components/List/NYTListContainer";
+
 
 function App() {
   return (
     <div>
       <ResponsiveAppBar />
-      
+      <NYTListContainer />
 
     </div>
   );
