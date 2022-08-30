@@ -3,7 +3,10 @@ import './components/List';
 import ActionAreaCard from './components/List';
 import ResponsiveAppBar from "./components/header";
 import Modal from "./components/addReview/Modal";
-
+import React from "react";
+import './components/List';
+import ActionAreaCard from './components/List';
+import ResponsiveAppBar from "./components/header";
 
 function App() {
   const [openModal, setOpenModal] = useState(false);
@@ -12,6 +15,7 @@ function App() {
     <div>
       <ResponsiveAppBar />
 
+
       <button onClick={() => setOpenModal(true)} 
       className='modalButton'>
         + Add Review
@@ -19,6 +23,9 @@ function App() {
         <Modal 
         open={openModal} 
         onClose={() => setOpenModal(false)}  />
+
+      
+
     </div>
   )
 }
