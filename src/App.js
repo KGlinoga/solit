@@ -1,11 +1,14 @@
 import React, {useState} from "react";
-import './components/List';
-import ActionAreaCard from './components/List';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import ResponsiveAppBar from "./components/header";
 import Modal from "./components/addReview/Modal";
-import React from "react";
-import ResponsiveAppBar from "./components/Header";
 import NYTListContainer from "./components/List/NYTListContainer";
+import Profile from "./components/Profile";
+import Followers from "./components/Followers";
+import Login from "./components/Login/login";
+import CreateAccount from "./CreateAccount/createAccount";
+
+
 
 
 function App() {
@@ -13,8 +16,20 @@ function App() {
 
   return (
     <div>
-      <ResponsiveAppBar />
-      <NYTListContainer />
+      <Router>
+        <ResponsiveAppBar />
+          <Routes>
+            <Route path ="/" element={<NYTListContainer />}/>
+            <Route path ="profile" element={<Profile />}/>
+            <Route path ="followers" element={<Followers/>}/>
+            <Route path ="login" element={<Login/>}/>
+            <Route path ="createAccount" element={<CreateAccount/>}/>
+            {/* <Route path ="account" element={<Account/>}/>
+            <Route path ="shelves" element={<Shelf/>}/>
+            <Route path ="" element={<Search/>}>
+            <Route path ="book" element={<BookPage/>}/> */}
+          </Routes>
+      </Router>
 
       <button onClick={() => setOpenModal(true)} 
       className='modalButton'>

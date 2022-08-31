@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import "./style.css";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -28,7 +27,7 @@ export default class FetchNytList extends React.Component{
                 <div>
                     
                     <Container>
-                    <Card item key={book.primary_isbn10} sx={{width: 350, backgroundColor: "#ff9e80", elevation:5, marginBottom:3}}>
+                    <Card item key={book.primary_isbn10} sx={{width: 350, backgroundColor: "#FCB29C", boxShadow: '3px 5px #C86F53', elevation:5, marginBottom:3}}>
                     <CardContent>
                     <CardActionArea>
                         <CardMedia
@@ -67,7 +66,7 @@ export default class FetchNytList extends React.Component{
                     <div>Loading you the hottest reads</div>
                 ):(
                     <div>
-                        <h1>This week's NYT Best Sellers</h1>
+                        <h1 class ="headernyt">This week's NYT Best Sellers</h1>
                            
                             <Container sx={{display: "flex"}} >
                             <Grid container direction="row"  sx={{display:"flex"}} justifyContent="space-evenly">
