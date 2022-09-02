@@ -1,0 +1,14 @@
+.header-content{
+    min-height: 10vh;
+    background: linear-gradient(rgba(247, 154, 216, 0.3), rgba(255, 107, 211, 0.5));
+    flex-direction: column;
+}
+.header-title{
+    font-size: 4.2rem;
+}
+.header-text{
+    margin-top: -1.8rem;
+    margin-bottom: 2.8rem;
+    opacity: 0.8;
+    max-width: 770px;
+}
