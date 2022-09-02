@@ -10,7 +10,8 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Slider from '@mui/material/Slider';
 import Stack from '@mui/material/Stack';
-import { Editor } from '@tinymce/tinymce-react';
+// import { Editor } from '@tinymce/tinymce-react';
+// import './index.css';
 
 const Form = () => {
   // export function CheckboxesGroup() {
@@ -33,15 +34,27 @@ const Form = () => {
   const marks = [
     {
       value: 0,
+      label: '',
+    },
+    {
+      value: 20,
       label: '🔥',
     },
     {
-      value: 50,
+      value: 40,
       label: '🔥🔥',
     },
     {
-      value: 100,
+      value: 60,
       label: '🔥🔥🔥',
+    },
+    {
+      value: 80,
+      label: '🔥🔥🔥🔥',
+    },
+    {
+      value: 100,
+      label: '🔥🔥🔥🔥🔥',
     }
   ];
   function valuetext(value: number) {
@@ -154,20 +167,22 @@ const Form = () => {
         </Typography>
         <Slider
           aria-label="Custom marks"
-          defaultValue={50}
+          defaultValue={60}
           getAriaValueText={valuetext}
-          step={50}
+          step={20}
           valueLabelDisplay="auto"
           marks={marks}
+          min={0}
+          max={5}
         />
         <Typography id="track-false-slider" gutterBottom>
         Characters
         </Typography>
         <Slider
           aria-label="Custom marks"
-          defaultValue={50}
+          defaultValue={3}
           getAriaValueText={valuetext}
-          step={50}
+          step={1}
           valueLabelDisplay="auto"
           marks={marks}
         />
@@ -176,9 +191,9 @@ const Form = () => {
         </Typography>
         <Slider
           aria-label="Custom marks"
-          defaultValue={50}
+          defaultValue={3}
           getAriaValueText={valuetext}
-          step={50}
+          step={1}
           valueLabelDisplay="auto"
           marks={marks}
         />
@@ -187,9 +202,9 @@ const Form = () => {
         </Typography>
         <Slider
           aria-label="Custom marks"
-          defaultValue={50}
+          defaultValue={3}
           getAriaValueText={valuetext}
-          step={50}
+          step={1}
           valueLabelDisplay="auto"
           marks={marks}
         />

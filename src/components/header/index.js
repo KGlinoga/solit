@@ -16,6 +16,7 @@ import MenuItem from '@mui/material/MenuItem';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
+import SearchForm from '../SearchForm/SearchForm';
 
 
 
@@ -176,13 +177,7 @@ const ResponsiveAppBar = () => {
           </Box>
 
           <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
+            <SearchForm />
           </Search>
 
           <Box sx={{ flexGrow: 0 }}>

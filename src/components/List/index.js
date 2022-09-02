@@ -32,12 +32,12 @@
 // }
 
 // export default function List (){
-    //     return(
-        //        <div>
-        //         renderList
-        //        </div>
-        //     );
-        // }
+//         return(
+//                <div>
+//                 renderList
+//                </div>
+//             );
+//         }
         
 // export default function ActionAreaCard(title, description, cover) {
 //     return (
