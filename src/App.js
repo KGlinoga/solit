@@ -1,4 +1,13 @@
-import {useState, useEffect} from "react";
+import React, {useState, useEffect} from "react";
+import './components/List';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { AppProvider } from './context';
+import './index.css';
+import Home from './pages/Home/Home';
+import About from "./pages/About/About";
+import BookList from "./components/BookList/BookList";
+import BookDetails from "./components/BookDetails/BookDetails";
+import React, {useState} from "react";
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import ResponsiveAppBar from "./components/header";
 import Modal from "./components/addReview/Modal";
@@ -89,6 +98,17 @@ function App() {
 
   return (
     <div>
+      <AppProvider>
+      <BrowserRouter>
+      <Routes>
+       <Route path = "/" element = {<Home />}>
+          <Route path = "about" element = {<About />} />
+          <Route path = "/book" element = {<BookList />} />
+          <Route path = "/book/:id" element = {<BookDetails />} />
+        </Route>
+     </Routes>
+     </BrowserRouter>
+   </AppProvider> 
       <Router>
         <ResponsiveAppBar />
           <Routes>
@@ -117,6 +137,7 @@ function App() {
 
     </div>
   )
-}
+  }
+
 
 export default App;
