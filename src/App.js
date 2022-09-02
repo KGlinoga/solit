@@ -1,16 +1,12 @@
 import React, {useState, useEffect} from "react";
 import './components/List';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { AppProvider } from './context';
+import { AppProvider } from './Context';
 import './index.css';
 import Home from './pages/Home/Home';
 import About from "./pages/About/About";
 import BookList from "./components/BookList/BookList";
 import BookDetails from "./components/BookDetails/BookDetails";
-import React, {useState} from "react";
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import ResponsiveAppBar from "./components/header";
-import Modal from "./components/addReview/Modal";
 import NYTListContainer from "./components/List/NYTListContainer";
 import Profile from "./components/Profile";
 import Followers from "./components/Followers";
@@ -94,44 +90,43 @@ function App() {
 //   setToken("")
 // }
   
-  const [openModal, setOpenModal] = useState(false);
 
   return (
     <div>
       <AppProvider>
-      <BrowserRouter>
+      <Router>
+      <Home/>
       <Routes>
-       <Route path = "/" element = {<Home />}>
+       <Route path = "/" element = {<NYTListContainer/>}>
           <Route path = "about" element = {<About />} />
           <Route path = "/book" element = {<BookList />} />
           <Route path = "/book/:id" element = {<BookDetails />} />
+
+        </Route>
+        <Route>
+
+          <Route path ="/users/:id" element={<Profile token={token}/>}/>
+          <Route path ="/login" element={<Login userId={user.id} handleLogin={submitLoginHandle}/>}/>
+          <Route path ="/createAccount" element={<CreateAccount handleSignUp={submitSignUpHandle}/>}/>
         </Route>
      </Routes>
-     </BrowserRouter>
+     </Router>
    </AppProvider> 
-      <Router>
-        <ResponsiveAppBar />
+      {/* <Router> */}
+        {/* <Home/>
           <Routes>
-            <Route path ="/" element={<NYTListContainer />}/>
+            
             <Route path ="/users/:id" element={<Profile token={token}/>}/>
             <Route path ="/followers" element={<Followers/>}/>
             <Route path ="/login" element={<Login userId={user.id} handleLogin={submitLoginHandle}/>}/>
             <Route path ="/createAccount" element={<CreateAccount handleSignUp={submitSignUpHandle}/>}/>
-            <Route path ="*" element={<h1>404 page</h1>}/>
+            <Route path ="*" element={<h1>404 page</h1>}/> */}
             {/* <Route path ="account" element={<Account/>}/>
             <Route path ="shelves" element={<Shelf/>}/>
             <Route path ="" element={<Search/>}>
             <Route path ="book" element={<BookPage/>}/> */}
-          </Routes>
-      </Router>
-
-      <button onClick={() => setOpenModal(true)} 
-      className='modalButton'>
-        + Add Review
-      </button>
-        <Modal 
-        open={openModal} 
-        onClose={() => setOpenModal(false)}  />
+          {/* </Routes>
+      </Router> */}
 
       
 

@@ -4,11 +4,10 @@ import ResponsiveAppBar from '../../components/header/index'
 
 const Home = () => {
   return (
-    <main>
+    <div>
       <ResponsiveAppBar />
-        {/* <SearchHeader /> */}
         <Outlet />
-    </main>
+    </div>
   )
 }
 
