@@ -8,16 +8,18 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
+// import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-// import AdbIcon from '@mui/icons-material/Adb';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
 import SearchForm from '../SearchForm/SearchForm';
-
+import { Link } from 'react-router-dom';
+import { ThemeProvider } from '@mui/material/styles';
+import theme from '../createTheme';
+import "./style.css";
 
 
 const pages = ['Followers', 'Shelves'];
@@ -86,11 +88,12 @@ const ResponsiveAppBar = () => {
     setAnchorElUser(null);
   };
 
+
   return (
-    <AppBar position="static">
+    <AppBar position="static" sx={{backgroundColor:'#034F42'}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <LocalFireDepartmentIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <LocalFireDepartmentIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 , color:'#C86F53'}} />
           <Typography
             variant="h6"
             noWrap
@@ -102,7 +105,7 @@ const ResponsiveAppBar = () => {
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'inherit',
+              color: '#FE9D7F',
               textDecoration: 'none',
             }}
           >
@@ -135,17 +138,19 @@ const ResponsiveAppBar = () => {
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: 'block', md: 'none' },
+                display: { xs: 'block', md: 'none', backgroundColor: '#FE9D7F'},
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem key={page}>
+                  <Link style={{textDecoration: "none", color: "#FE9D7F"}}to={`/${page}`}>
+                {page}
+                </Link>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          <LocalFireDepartmentIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          <LocalFireDepartmentIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1, color:'#C86F53' }} />
           <Typography
             variant="h5"
             noWrap
@@ -168,10 +173,11 @@ const ResponsiveAppBar = () => {
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
+                <Link style={{textDecoration: "none", color: "#FE9D7F"}}to={`/${page}`}>
                 {page}
+                </Link>
               </Button>
             ))}
           </Box>
@@ -183,11 +189,15 @@ const ResponsiveAppBar = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <ThemeProvider theme={theme}>
+                <Button variant="contained" color="neutral" >
+                  <Link style={{textDecoration: "none", color:"#034F42"}} to={`/login`}>Login</Link>
+                </Button>
+                </ThemeProvider>
               </IconButton>
             </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
+            {/* <Menu
+              sx={{ mt: '45px'}}
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{
@@ -202,12 +212,12 @@ const ResponsiveAppBar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
+              {/* {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
-              ))}
-            </Menu>
+              ))} */}
+            {/* </Menu> */} 
           </Box>
         </Toolbar>
       </Container>
