@@ -34,8 +34,13 @@ const Api = {
         },
     })
     },
-    getUserById:userId=>{
-      return fetch(`${URL_PREFIX}/users/${userId}`)
-    },
+    // getUserById:(token)=>{
+    //   return fetch(`${URL_PREFIX}/user-from-token`{
+    //     method:"GET",
+    //     headers:{
+    //       "Content-Type": "application/json"
+    //     },
+    //   })
+    // },
 }
 export default Api;

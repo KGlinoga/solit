@@ -28,7 +28,7 @@ export default class FetchNytList extends React.Component{
                     
                     <Container >
                     <Grid item key="listbook" >
-                    <Card   sx={{width: 350, backgroundColor: "#FCB29C", boxShadow: '3px 5px #C86F53', elevation:5, marginBottom:3}}>
+                    <Card   sx={{width: 350, backgroundColor: "#ffffff", boxShadow: '3px 5px black', elevation:5, marginBottom:3, border:`1px lightgrey solid`}}>
                     <CardContent>
                     <CardActionArea>
                         <CardMedia

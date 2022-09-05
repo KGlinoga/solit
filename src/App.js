@@ -17,7 +17,7 @@ import Api from './utils/Api.js';
 
 
 function App() {
- 
+
   const[user, setUser]=useState({
       id:0,
       email:''
@@ -60,6 +60,7 @@ function App() {
       setToken(data.token)
       localStorage.setItem("token",data.token)
      
+     
     })
 }
 
@@ -81,6 +82,20 @@ function App() {
   })
 }
 
+// const retrieveProfile=(token)=>{
+//   Api.getUserById(token).then(res=>{
+//     if(!res.ok){
+//       setUser({userId:0,email:""});
+//       setToken("")
+//       window.alert("Please sign in to view profile.")
+//       return;
+//     }return res.json()
+//   }).then(data=>{
+//     console.log(data)
+    
+//   })
+// }
+
 // const logoutClick = ()=>{
 //   localStorage.removeItem("token");
 //   setUser({
@@ -97,14 +112,15 @@ function App() {
       <Router>
       <Home/>
       <Routes>
+
        <Route path = "/" element = {<NYTListContainer/>}>
           <Route path = "about" element = {<About />} />
           <Route path = "/book" element = {<BookList />} />
           <Route path = "/book/:id" element = {<BookDetails />} />
 
         </Route>
-        <Route>
 
+        <Route>
           <Route path ="/users/:id" element={<Profile token={token}/>}/>
           <Route path ="/login" element={<Login userId={user.id} handleLogin={submitLoginHandle}/>}/>
           <Route path ="/createAccount" element={<CreateAccount handleSignUp={submitSignUpHandle}/>}/>
