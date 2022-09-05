@@ -43,10 +43,10 @@ const ResponsiveAppBar = () => {
 
 
   return (
-    <AppBar position="static" sx={{backgroundColor:'#034F42'}}>
+    <AppBar position="static" sx={{backgroundColor:'#002419'}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <LocalFireDepartmentIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 , color:'#C86F53'}} />
+          <LocalFireDepartmentIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 , color:'#ffffff'}} />
           <Typography
             variant="h6"
             noWrap
@@ -96,14 +96,14 @@ const ResponsiveAppBar = () => {
             >
               {pages.map((page) => (
                 <MenuItem key={page}>
-                  <Link style={{textDecoration: "none", color: "#FE9D7F"}}to={`/${page}`}>
+                  <Link style={{textDecoration: "none", color: "#ffffff"}}to={`/${page}`}>
                 {page}
                 </Link>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          <LocalFireDepartmentIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1, color:'#C86F53' }} />
+          <LocalFireDepartmentIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1, color:'#ffffff' }} />
           <Typography
             variant="h5"
             noWrap
@@ -128,17 +128,23 @@ const ResponsiveAppBar = () => {
                 key={page}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                <Link style={{textDecoration: "none", color: "#FE9D7F"}}to={`/${page}`}>
+                <Link style={{textDecoration: "none", color: "#ffffff"}}to={`/${page}`}>
                 {page}
                 </Link>
               </Button>
             ))}
           </Box>
+            
 
-           <div>
+            <div>
 
             <SearchForm />
-           </div>
+            </div>
+
+              
+
+        
+   
         
 
           <Box sx={{ flexGrow: 0 }}>
@@ -146,7 +152,7 @@ const ResponsiveAppBar = () => {
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <ThemeProvider theme={theme}>
                 <Button variant="contained" color="neutral" >
-                  <Link style={{textDecoration: "none", color:"#034F42"}} to={`/login`}>Login</Link>
+                  <Link style={{textDecoration: "none", color:"#ffffff"}} to={`/login`}>Login</Link>
                 </Button>
                 </ThemeProvider>
               </IconButton>

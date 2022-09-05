@@ -9,13 +9,14 @@ const AppProvider = ({children}) => {
     const [loading, setLoading] = useState(true);
     const [resultTitle, setResultTitle] = useState("");
 
+
     const fetchBooks = useCallback(async() => {
         setLoading(true);
         try{
             const response = await fetch(`${URL}${searchTerm}`);
             const data = await response.json();
             const {docs} = data;
-
+          
             if(docs){
                 const newBooks = docs.slice(0, 20).map((bookSingle) => {
                     const {key, author_name, cover_i, edition_count, first_publish_year, title} = bookSingle;
@@ -56,7 +57,7 @@ const AppProvider = ({children}) => {
         <AppContext.Provider value = {{
             loading, books, setSearchTerm, resultTitle, setResultTitle,
         }}>
-            {children}
+           {children} 
         </AppContext.Provider>
     )
 }

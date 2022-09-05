@@ -1,6 +1,7 @@
 import { Divider, Grid, Paper, Typography } from "@mui/material";
 import React from "react";
 
+
 const Profile = () => {
     const imgStyle = {width: 50, height:50, borderRadius: "80px"}
     const paperStyle={padding: 10, margin:"20px 20px" }
