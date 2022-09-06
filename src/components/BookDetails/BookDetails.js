@@ -6,6 +6,7 @@ import "./BookDetails.css";
 import {FaArrowLeft} from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import AddReview from './Page';
+import BookRatings from '/BookRatings.js';
 
 const URL = "https://openlibrary.org/works/";
 
@@ -63,6 +64,9 @@ const BookDetails = () => {
             </div>
             <div className='book-details-item description'>
               <span>{book?.description}</span>
+            </div>
+            <div id="BookRatings">
+                <BookRatings/>
             </div>
             <div className="addReviewbtn">
               <AddReview />
