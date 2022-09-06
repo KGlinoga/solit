@@ -12,6 +12,7 @@ const Profile = () => {
     const [username, setUsername]=useState('');
     // const[description, setDescription]=useState('');
     // const [dailyDairies, setDailyDairies]=useState('');
+    const [profilePicURL, setProfilePicURL] = useState('');
 
     useEffect(()=>{
         Api.getUserById(id).then(res=>res.json()).then(data=>{
@@ -20,6 +21,7 @@ const Profile = () => {
             setShelves(data.userShelves);
             setUsername(data.username);
             // setDescription(data.)
+            setProfilePicURL(data.profilePicURL);
         })
     })
 
@@ -31,6 +33,7 @@ const Profile = () => {
        <Grid container align="center" justifyContent="space-between">
             <Grid item xs={12}>
                 <Paper style={paperStyle}>
+                    {/* this is the profile image */}
                     <img style={imgStyle} alt="profile" src="https://unsplash.com/photos/_M6gy9oHgII" />
                     <Typography>
                        { username}
