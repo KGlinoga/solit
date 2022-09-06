@@ -57,7 +57,7 @@ const AppProvider = ({children}) => {
         <AppContext.Provider value = {{
             loading, books, setSearchTerm, resultTitle, setResultTitle
         }}>
-            {children}
+           {children} 
         </AppContext.Provider>
    )
 }

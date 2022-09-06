@@ -57,7 +57,7 @@ const ResponsiveAppBar = (props) => {
     <AppBar position="static" sx={{backgroundColor:'#034F42'}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <LocalFireDepartmentIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 , color:'#C86F53'}} />
+          <LocalFireDepartmentIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 , color:'#ffffff'}} />
           <Typography
             variant="h6"
             noWrap
@@ -114,7 +114,7 @@ const ResponsiveAppBar = (props) => {
               ))}
             </Menu>
           </Box>
-          <LocalFireDepartmentIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1, color:'#C86F53' }} />
+          <LocalFireDepartmentIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1, color:'#ffffff' }} />
           <Typography
             variant="h5"
             noWrap
@@ -145,11 +145,17 @@ const ResponsiveAppBar = (props) => {
               </Button>
             ))}
           </Box>
+            
 
-           <div>
+            <div>
 
             <SearchForm />
-           </div>
+            </div>
+
+              
+
+        
+   
         
 
           <Box sx={{ flexGrow: 0 }}>

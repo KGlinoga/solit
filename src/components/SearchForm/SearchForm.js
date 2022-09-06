@@ -38,8 +38,8 @@ const SearchForm = () => {
           <form className='search-form' onSubmit={handleSubmit}>
             <div className='search-form-elem flex flex-sb bg-white'>
               <input type = "text" className='form-control' placeholder='Search here' ref = {searchText} />
-              <button type = "submit" className='flex flex-c' onClick={handleSubmit}>
-                <FaSearch size = {12} />
+              <button type = "submit" className='flex flex-c'  onClick={handleSubmit}>
+                <FaSearch size = {16} />
               </button>
             </div>
           </form>

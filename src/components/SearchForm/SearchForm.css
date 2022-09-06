@@ -13,3 +13,8 @@
 .search-form-elem .form-control::placeholder{
     opacity: 0.9;
 }
+
+.form-control{
+    width: 100%;
+    max-width: 300px;
+}
