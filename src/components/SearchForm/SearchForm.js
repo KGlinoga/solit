@@ -8,19 +8,27 @@ const SearchForm = () => {
   const {setSearchTerm, setResultTitle} = useGlobalContext();
   const searchText = useRef('');
   const navigate = useNavigate();
+  // console.log(searchText);
+  // console.log(setSearchTerm);
+
+    // useEffect(() => {
+    //     fetchBooks();
+    // }, [searchTerm]);
 
   useEffect(() => searchText.current.focus(), []);
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     let tempSearchTerm = searchText.current.value.trim();
+
     if((tempSearchTerm.replace(/[^\w\s]/gi,"")).length === 0){
       setSearchTerm("100 Years of Solitude");
       setResultTitle("Search here ...");
     } else {
       setSearchTerm(searchText.current.value);
+  
+      navigate("/book");
     }
-
-    navigate("/book");
   };
 
   return (

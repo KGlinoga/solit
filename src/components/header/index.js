@@ -12,7 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import SearchForm from '../SearchForm/SearchForm';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from '../createTheme';
 import "./style.css";
@@ -22,7 +22,15 @@ const pages = ['Followers', 'Shelves'];
 const settings = ['Profile', 'Account', 'Notifications','Logout'];
 
 
-const ResponsiveAppBar = () => {
+const ResponsiveAppBar = (props) => {
+  //redirect if user logs out
+  const navigate= useNavigate();
+  const logMeOut = ()=>{
+    props.logout();
+    navigate("/")
+  }
+
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -43,6 +51,9 @@ const ResponsiveAppBar = () => {
 
 
   return (
+    <div>
+    {/* if logged in */}
+    {props.userId?(     
     <AppBar position="static" sx={{backgroundColor:'#034F42'}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
@@ -58,7 +69,7 @@ const ResponsiveAppBar = () => {
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: '#FE9D7F',
+              color: '#ffffff',
               textDecoration: 'none',
             }}
           >
@@ -96,7 +107,7 @@ const ResponsiveAppBar = () => {
             >
               {pages.map((page) => (
                 <MenuItem key={page}>
-                  <Link style={{textDecoration: "none", color: "#FE9D7F"}}to={`/${page}`}>
+                  <Link style={{textDecoration: "none", color: "#ffffff"}}to={`/${page}`}>
                 {page}
                 </Link>
                 </MenuItem>
@@ -128,7 +139,7 @@ const ResponsiveAppBar = () => {
                 key={page}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                <Link style={{textDecoration: "none", color: "#FE9D7F"}}to={`/${page}`}>
+                <Link style={{textDecoration: "none", color: "#ffffff"}}to={`/${page}`}>
                 {page}
                 </Link>
               </Button>
@@ -145,8 +156,8 @@ const ResponsiveAppBar = () => {
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <ThemeProvider theme={theme}>
-                <Button variant="contained" color="neutral" >
-                  <Link style={{textDecoration: "none", color:"#034F42"}} to={`/login`}>Login</Link>
+                <Button variant="contained" color="neutral" onClick={logMeOut} >
+                  Logout
                 </Button>
                 </ThemeProvider>
               </IconButton>
@@ -177,6 +188,101 @@ const ResponsiveAppBar = () => {
         </Toolbar>
       </Container>
     </AppBar>
+      ):(  
+          <AppBar position="static" sx={{backgroundColor:'#034F42'}}>
+            <Container maxWidth="xl">
+              <Toolbar disableGutters>
+                <LocalFireDepartmentIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 , color:'#C86F53'}} />
+                <Typography
+                  variant="h6"
+                  noWrap
+                  component="a"
+                  href="/"
+                  sx={{
+                    mr: 2,
+                    display: { xs: 'none', md: 'flex' },
+                    fontFamily: 'monospace',
+                    fontWeight: 700,
+                    letterSpacing: '.3rem',
+                    color: '#ffffff',
+                    textDecoration: 'none',
+                  }}
+                >
+                  SoLit
+                </Typography>
+      
+                <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                  <IconButton
+                    size="large"
+                    aria-label="account of current user"
+                    aria-controls="menu-appbar"
+                    aria-haspopup="true"
+                    onClick={handleOpenNavMenu}
+                    color="inherit"
+                  >
+                    <MenuIcon />
+                  </IconButton>
+                  <Menu
+                    id="menu-appbar"
+                    anchorEl={anchorElNav}
+                    anchorOrigin={{
+                      vertical: 'bottom',
+                      horizontal: 'left',
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                      vertical: 'top',
+                      horizontal: 'left',
+                    }}
+                    open={Boolean(anchorElNav)}
+                    onClose={handleCloseNavMenu}
+                    sx={{
+                      display: { xs: 'block', md: 'none', backgroundColor: '#FE9D7F'},
+                    }}
+                  >
+                  </Menu>
+                </Box>
+                <LocalFireDepartmentIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1, color:'#C86F53' }} />
+                <Typography
+                  variant="h5"
+                  noWrap
+                  component="a"
+                  href=""
+                  sx={{
+                    mr: 2,
+                    display: { xs: 'flex', md: 'none' },
+                    flexGrow: 1,
+                    fontFamily: 'monospace',
+                    fontWeight: 700,
+                    letterSpacing: '.3rem',
+                    color: 'inherit',
+                    textDecoration: 'none',
+                  }}
+                >
+                  SoLit
+                </Typography>
+      
+                 <div>
+                    <SearchForm />
+                 </div>
+              
+      
+                <Box sx={{ flexGrow: 0 }}>
+                  <Tooltip title="Open settings">
+                    <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                      <ThemeProvider theme={theme}>
+                      <Button variant="contained" color="neutral" >
+                        <Link style={{textDecoration: "none", color:"#034F42"}} to={`/login`}>Login</Link>
+                      </Button>
+                      </ThemeProvider>
+                    </IconButton>
+                  </Tooltip>
+                </Box>
+              </Toolbar>
+            </Container>
+          </AppBar>
+      )}
+      </div>
   );
 };
 export default ResponsiveAppBar;
