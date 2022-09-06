@@ -1,28 +1,39 @@
-import React, {  useState } from "react";
+import React, {  useState , useEffect} from "react";
 import { Grid, Paper, Typography, Avatar, TextField, FormControlLabel, Checkbox, Button, Link} from "@mui/material";
 import LocalFireDepartmentTwoToneIcon from '@mui/icons-material/LocalFireDepartmentTwoTone';
 import { pink } from "@mui/material/colors";
+import { useNavigate } from "react-router";
 
    
 const Login = (props) => {
     // Styling
     const paperStyle = {padding: 15, height:'70vh', width: 400, margin: '40px auto'}
     const btnStyle={margin:'8px 0'}
-
+    
     //set email and password
     const[email, setEmail]=useState("")
-     const[password, setPassword]=useState("")
+    const[password, setPassword]=useState("")
+    
     // for Remember Me checkbox
     const [checked, setChecked] = React.useState(true);
-  
+    
     const handleChange = (event) => {
-      setChecked(event.target.checked);
+        setChecked(event.target.checked);
     };
-
+    
     const submit=(e)=>{
         e.preventDefault();
+        console.log(email)
         props.handleLogin(email, password);
     }
+    //login redirect
+    const navigate = useNavigate();
+
+    useEffect(()=>{
+        if(props.userId){
+            navigate(`/users/${props.userId}`)
+        }
+    }, [props.userId])
 
     return(
       
