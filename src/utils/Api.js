@@ -1,4 +1,4 @@
-const URL_PREFIX= "https://solit-backend.herokuapp.com"
+const URL_PREFIX= "http://localhost:3001"
 
 const Api = {
   checkToken:token=>{

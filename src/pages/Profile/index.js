@@ -21,7 +21,7 @@ const Profile = () => {
             setUsername(data.username);
             // setDescription(data.)
         })
-    })
+    },[id])
 
     const imgStyle = {width: 50, height:50, borderRadius: "80px"}
     const paperStyle={padding: 10, margin:"20px 20px" }
