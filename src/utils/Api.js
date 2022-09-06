@@ -21,7 +21,7 @@ const Api = {
     })
   },
     // add profilePicURL (optional)
-    signup: (email,password,firstName, lastName, username)=>{
+  signup: (email, password, firstName, lastName, username, profilePicURL)=>{
         return fetch(`${URL_PREFIX}/signup`,{
         method:"POST",
         body:JSON.stringify({
@@ -40,7 +40,7 @@ const Api = {
       return fetch(`${URL_PREFIX}/users/${userId}`)
   },
     // add profilePicURL (MVP)
-    updateAccount:(email, firstName, lastName, username, password)=>{
+    updateAccount:(email, firstName, lastName, username, password, profilePicURL)=>{
       return(fetch`${URL_PREFIX}/update`,{
         method:"PUT",
         body:JSON.stringify({

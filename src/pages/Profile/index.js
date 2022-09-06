@@ -33,8 +33,8 @@ const Profile = () => {
        <Grid container align="center" justifyContent="space-between">
             <Grid item xs={12}>
                 <Paper style={paperStyle}>
-                    {/* this is the profile image */}
-                    <img style={imgStyle} alt="profile" src="https://unsplash.com/photos/_M6gy9oHgII" />
+                    {/* this is the profile image when Cloudinary is in, replace that URL with the app generated thing*/}
+                    <img style={imgStyle} alt="profile" src="https://image.shutterstock.com/shutterstock/photos/651401656/display_1500/stock-photo-cat-man-651401656.jpg" />
                     <Typography>
                        { username}
                     </Typography>
