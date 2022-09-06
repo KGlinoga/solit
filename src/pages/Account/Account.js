@@ -12,6 +12,7 @@ const Account= (props) => {
     const [username, setUsername]=useState('');
     const [password, setPassword]=useState('');
     // const[description, setDescription]=useState('');
+    const [profilePicURL, setProfilePicURL] = useState('');
    
     const submit=(e)=>{
         e.preventDefault();
@@ -35,7 +36,9 @@ const Account= (props) => {
        <Grid container align="center" justifyContent="space-between">
             <Grid item xs={12}>
                 <Paper style={paperStyle}>
-                    <img style={imgStyle} alt="profile" src="https://unsplash.com/photos/_M6gy9oHgII" />
+                    <img style={imgStyle} alt="profile" src="
+https://image.shutterstock.com/shutterstock/photos/651401656/display_1500/stock-photo-cat-man-651401656.jpg
+" />
                     <Typography>
                        { username}
                     </Typography>

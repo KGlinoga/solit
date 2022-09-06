@@ -38,6 +38,10 @@ const Profile = () => {
                     <Typography>
                        { username}
                     </Typography>
+
+
+
+                    
                     <Typography>
                         Insert Description here
                     </Typography>
