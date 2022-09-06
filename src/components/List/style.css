@@ -1,7 +1,7 @@
 .headernyt{
-    color: #ffffff;
+    color: white ;
     text-align: center;
-    padding: 10px 0px;
-    margin: 25px 0px;
-    background-color: #004c3f;
+    text-shadow: 2px 2px   #2A6D60;
+    background-color: #4b2c20 ;
+    margin: 15px 0;
 }

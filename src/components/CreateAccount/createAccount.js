@@ -1,10 +1,10 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { Grid, Paper, Typography, Avatar, TextField, FormControlLabel, Checkbox, Button, Link } from "@mui/material";
 import LocalFireDepartmentTwoToneIcon from '@mui/icons-material/LocalFireDepartmentTwoTone';
 import { pink } from "@mui/material/colors";
-// import { Navigate, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
    
-
+//add redirect to profile once created
 
 const CreateAccount = (props) => {
     const paperStyle = {padding: 15, height:'70vh', width: 450, margin: '40px auto'}
@@ -12,22 +12,26 @@ const CreateAccount = (props) => {
 
     // for stay signed in checkbox
     const [checked, setChecked] = React.useState(true);
-    const[email, setEmail]=useState("")
-    const[password, setPassword]=useState("")
-    const[name, setName]=useState("")
-    const[username, setUsername]=useState("")
+    const[email, setEmail]=useState("");
+    const[password, setPassword]=useState("");
+    const[firstName, setFirstName]=useState("");
+    const[lastName, setLastName]=useState("");
+    const[username, setUsername]=useState("");
     
-    // const navigate
-    // useEffect(()=>{
-    //     if (props.userId){
-    //         Navigate(`/users/${props.userId}`)
-    //     }
-    // }, [props.userId])
-
+ 
     const submit=e=>{
         e.preventDefault();
-        props.handleSignUp(email, password, name, username);
+        props.handleSignUp(email, password, firstName, lastName, username);
     }
+
+    const navigate = useNavigate();
+
+    useEffect(()=>{
+        if(props.userId){
+            navigate(`/users/${props.userId}`)
+        }
+    }, [props.userId])
+
 
     const handleChange = (event) => {
       setChecked(event.target.checked);
@@ -50,19 +54,22 @@ const CreateAccount = (props) => {
                     <form onSubmit={submit}>
                     <Grid container>
                     <Grid item xs={12}>
-                        <TextField id="nameCreate" label="Full Name" placeholder="Enter Full Name" variant ="standard" value={name} onChange={e=>setName(e.target.value)}required/>
+                        <TextField id="firstNameCreate" label="First Name" placeholder="Enter First Name" variant ="standard" value={firstName} onChange={e=>setFirstName(e.target.value)} required fullWidth/>
                     </Grid>
-                    <Grid item xs={6}>
-                        <TextField id="emailCreate" label="Email" placeholder="Enter Email" variant ="standard" value={email} onChange={e=>setEmail(e.target.value)} required/>
+                    <Grid item xs={12}>
+                        <TextField id="lastNameCreate" label="Last Name" placeholder="Enter Last Name" variant ="standard" value={lastName} onChange={e=>setLastName(e.target.value)} required fullWidth/>
                     </Grid>
-                    <Grid item xs={6}>
-                        <TextField id="usernameCreate" label="Username" placeholder="Enter Username" variant ="standard" value={username} onChange={e=>setUsername(e.target.value)} required/>
+                    <Grid item xs={12}>
+                        <TextField id="emailCreate" label="Email" placeholder="Enter Email" variant ="standard" value={email} onChange={e=>setEmail(e.target.value)} required fullWidth/>
                     </Grid>
-                    <Grid item xs={6}>
-                        <TextField id="passwordCreate" label="Password" placeholder="Enter Password" variant ="standard" type="password" value={password} onChange={e=>setPassword(e.target.value)} required />
+                    <Grid item xs={12}>
+                        <TextField id="usernameCreate" label="username" placeholder="Enter username" variant ="standard" value={username} onChange={e=>setUsername(e.target.value)} required fullWidth/>
                     </Grid>
-                    <Grid item xs={6}>
-                        <TextField id="standard-basic" label="Confirm Password" placeholder="Re-enter Password" variant ="standard" type="password" required/>
+                    <Grid item xs={12}>
+                        <TextField id="passwordCreate" label="Password" placeholder="Enter Password" variant ="standard" type="password" value={password} onChange={e=>setPassword(e.target.value)} required fullWidth/>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <TextField id="standard-basic" label="Confirm Password" placeholder="Re-enter Password" variant ="standard" type="password" required fullWidth/>
                     </Grid>
 
                     </Grid>
