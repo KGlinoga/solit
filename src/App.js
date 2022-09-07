@@ -22,13 +22,17 @@ function App() {
     id: 0,
     email: ''
   })
+
   //token information for logged in user
   const [token, setToken] = useState("")
+  
+  const[isLoggedIn, setisLoggedIn]=useState(false);
+  
 
-  useEffect(() => {
+useEffect (() => {
     const storedToken = localStorage.getItem("token");
     Api.checkToken(storedToken).then(res => {
-      if (!res.ok) {
+      if (!res.id) {
         console.log("invalid token!")
         localStorage.removeItem("token")
       }
@@ -36,6 +40,7 @@ function App() {
         console.log("valid token")
         res.json().then(data => {
           setToken(storedToken)
+          setisLoggedIn(true);
           setUser({
             id: data.id,
             email: data.email
@@ -43,7 +48,7 @@ function App() {
         })
       }
     })
-  }, [])
+  },[])
 
   const submitLoginHandle = (email, password) => {
     Api.login(email, password).then(res => {
@@ -83,6 +88,8 @@ function App() {
 
     })
   }
+
+  //look at BE response for if conditional
   const submitUpdateAccount = (email, password, firstName, lastName, username) => {
     Api.updateAccount(email, password, firstName, lastName, username).then(res => {
       if (!res.ok) {
@@ -117,7 +124,7 @@ function App() {
     <div>
       <AppProvider>
         <Router>
-          <Home userId={user.id} logout={logoutClick} />
+          <Home userId={user.id} logout={logoutClick}  />
           <Routes>
             {/* book search routes */}
             <Route exact path="/" element={<NYTListContainer />} />
@@ -125,8 +132,7 @@ function App() {
             <Route exact path="/book" element={<BookList />} />
             <Route exact path="/book/:id" element={<BookDetails />} />
 
-       
-            <Route exact path="/users/:id" element={<Profile token={token} />}/>
+            <Route exact path="/users/:id" element={<Profile  token={token} />}/>
             <Route exact path="/users/account/:id" element={<Account token={token} updateAccount={submitUpdateAccount}/>}/>
            
 

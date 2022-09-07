@@ -2,38 +2,40 @@
 // ==================
 
 import React from 'react'
-import { AdvancedImage } from '@cloudinary/react';
-import { Cloudinary } from "@cloudinary/url-gen";
+// import { AdvancedImage } from '@cloudinary/react';
+// import { Cloudinary } from "@cloudinary/url-gen";
+
+function Widget() {
 
 // Import any actions required for transformations.
-import { fill } from "@cloudinary/url-gen/actions/resize";
+// import { fill } from "@cloudinary/url-gen/actions/resize";
 
-const App = () => {
-
-
-    // 2. Set your cloud name
-    //========================
-
-    // Create a Cloudinary instance and set your cloud name.
-    const cld = new Cloudinary({
-        cloud: {
-            cloudName: 'so-lit'
-        }
-    });
+// const App = () => {
 
 
-    // 3. Get your image
-    //===================
+//     // 2. Set your cloud name
+//     //========================
 
-    // Instantiate a CloudinaryImage object for the image with the public ID, 'docs/models'.
-    const myImage = cld.image('docs/models');
+//     // Create a Cloudinary instance and set your cloud name.
+//     const cld = new Cloudinary({
+//         cloud: {
+//             cloudName: 'so-lit'
+//         }
+//     });
 
 
-    // 4. Transform your image
-    //=========================
+//     // 3. Get your image
+//     //===================
 
-    // Resize to 250 x 250 pixels using the 'fill' crop mode.
-    myImage.resize(fill().width(250).height(250));
+//     // Instantiate a CloudinaryImage object for the image with the public ID, 'docs/models'.
+//     const myImage = cld.image('docs/models');
+
+
+//     // 4. Transform your image
+//     //=========================
+
+//     // Resize to 250 x 250 pixels using the 'fill' crop mode.
+//     myImage.resize(fill().width(250).height(250));
 
 
     // 5. Deliver your image
@@ -42,10 +44,11 @@ const App = () => {
     // Render the image in a React component.
     return (
         <div>
-            <AdvancedImage cldImg={myImage} />
+            <h1>Cloudinary for So Lit!</h1>
+            {/* <AdvancedImage cldImg={myImage} /> */}
         </div>
     )
 
 };
 
-export default AdvancedImage;
+export default Widget;

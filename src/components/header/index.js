@@ -16,6 +16,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from '../createTheme';
 import "./style.css";
+import { useEffect } from 'react';
 
 
 const pages = ['Followers', 'Shelves'];
@@ -25,10 +26,12 @@ const settings = ['Profile', 'Account', 'Notifications','Logout'];
 const ResponsiveAppBar = (props) => {
   //redirect if user logs out
   const navigate= useNavigate();
+
   const logMeOut = ()=>{
     props.logout();
     navigate("/")
   }
+ 
 
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -52,6 +55,7 @@ const ResponsiveAppBar = (props) => {
 
   return (
     <div>
+  
     {/* if logged in */}
     {props.userId?(     
     <AppBar position="static" sx={{backgroundColor:'#034F42'}}>
