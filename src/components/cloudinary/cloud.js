@@ -7,10 +7,7 @@ import { Cloudinary } from "@cloudinary/url-gen";
 
 function Widget() {
 
-    // const openWidget = () => {
-    //     //     // e.preventDefault();
-    //     myWidget();
-    // };
+    
 
     // var imgurl = "";
     // var myWidget = Cloudinary.createUploadWidget({
@@ -25,6 +22,11 @@ function Widget() {
     //     }
     // }
     // )
+
+// const openWidget = () => {
+    //     //     // e.preventDefault();
+    //     myWidget();
+    // };
 
 // Import any actions required for transformations.
 // import { fill } from "@cloudinary/url-gen/actions/resize";
@@ -63,11 +65,22 @@ function Widget() {
     // Render the image in a React component.
     return (
         <div>
+            <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
             <h1>Cloudinary for So Lit!</h1>
-            <button id="upload_widget" class="cloudinary-button">
-                {/* onClick={openWidget}> */}
+            <button id="upload_widget" class="cloudinary-button" 
+                // onClick={openWidget}
+            > 
                 Choose your Profile Picture!
             </button>
+
+            
+            <div class="col-12">
+                <label for="image">Product Image</label>
+                <button type="button" id="upload_widget" class="cloudinary-button form-control  teal darken-4" name="image">Upload Image</button>
+
+            </div>
+
+            <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script> 
             {/* <AdvancedImage cldImg={myImage} /> */}
         </div>
     )
