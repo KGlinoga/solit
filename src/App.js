@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import './components/List/index.js';
-import { AppProvider } from './Context3';
+import { AppProvider } from './context';
 import './index.css';
 import Home from './pages/Home/Home';
 import About from "./pages/About/About";
