@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import './components/List/index.js';
-import { AppProvider } from './Context';
+import { AppProvider } from './Context3';
 import './index.css';
 import Home from './pages/Home/Home';
 import About from "./pages/About/About";
@@ -128,7 +128,7 @@ function authCheck (){
             <Route exact path="/book" element={<BookList />} />
             <Route exact path="/book/:id" element={<BookDetails />} />
 
-            <Route exact path="/users/:id" element={<Profile  token={token} loggedIn={isLoggedIn} />}/>
+            <Route exact path="/users/:id" element={<Profile token={token} user={user} loggedIn={isLoggedIn} />}/>
             <Route exact path="/account" element={<Account user={user} loggedIn={isLoggedIn}/>}/>
            
 
