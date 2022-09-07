@@ -1,4 +1,6 @@
-const URL_PREFIX= "http://localhost:3001"
+
+// const URL_PREFIX= "https://solit-backend.herokuapp.com"
+const URL_PREFIX ="http://localhost:3001"
 
 const Api = {
   checkToken:token=>{
@@ -19,8 +21,9 @@ const Api = {
             "Content-Type":"application/json"
         }
     })
-    },
-    signup: (email,password,firstName, lastName, username)=>{
+  },
+    // add profilePicURL (optional)
+  signup: (email, password, firstName, lastName, username, profilePicURL)=>{
         return fetch(`${URL_PREFIX}/signup`,{
         method:"POST",
         body:JSON.stringify({
@@ -37,8 +40,9 @@ const Api = {
     },
     getUserById:userId=>{
       return fetch(`${URL_PREFIX}/users/${userId}`)
-    },
-    updateAccount:(email, firstName, lastName, username, password)=>{
+  },
+    // add profilePicURL (MVP)
+    updateAccount:(email, firstName, lastName, username, password, profilePicURL)=>{
       return(fetch`${URL_PREFIX}/update`,{
         method:"PUT",
         body:JSON.stringify({
