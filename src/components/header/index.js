@@ -57,7 +57,7 @@ const ResponsiveAppBar = (props) => {
     <div>
   
     {/* if logged in */}
-    {props.userId?(     
+    {props.isLoggedIn?(     
     <AppBar position="static" sx={{backgroundColor:'#034F42'}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>

@@ -31,9 +31,13 @@ function App() {
   
 
 useEffect (() => {
+  authCheck();
+  },[])
+
+function authCheck (){
     const storedToken = localStorage.getItem("token");
     Api.checkToken(storedToken).then(res => {
-      if (!res.id) {
+      if (!res.ok) {
         console.log("invalid token!")
         localStorage.removeItem("token")
       }
@@ -49,24 +53,27 @@ useEffect (() => {
         })
       }
     })
-  },[])
+  }
 
   const submitLoginHandle = (email, password) => {
     Api.login(email, password).then(res => {
       if (!res.ok) {
         setUser({ userId: 0, email: "" });
         setToken("")
+        console.log('res not ok')
         return;
       }
       return res.json()
     }).then(data => {
-      console.log(data)
+      console.log(data.token)
       setUser({
         id: data.user.id,
         email: data.user.email
       })
       setToken(data.token)
       localStorage.setItem("token", data.token)
+      setisLoggedIn(true);
+      localStorage.setItem("test", 'hello');
     })
   }
 
@@ -84,32 +91,13 @@ useEffect (() => {
         id: data.user.id,
         email: data.user.email,
       })
-      setToken(data.token)
+      setToken(data.token);
+      setisLoggedIn(true);
       localStorage.setItem("token", data.token)
 
     })
   }
 
-  //look at BE response for if conditional
-  const submitUpdateAccount = (email, password, firstName, lastName, username) => {
-    Api.updateAccount(email, password, firstName, lastName, username).then(res => {
-      if (!res.ok) {
-        setUser({ userId: 0, email: "" });
-        setToken("")
-        return;
-      }
-      return res.json()
-    }).then(data => {
-      console.log(data)
-      setUser({
-        id: data.user.id,
-        email: data.user.email,
-      })
-      setToken(data.token)
-      localStorage.setItem("token", data.token)
-
-    })
-  }
 
   const logoutClick = () => {
     localStorage.removeItem("token");
@@ -118,6 +106,7 @@ useEffect (() => {
       email: ''
     })
     setToken("")
+    setisLoggedIn(false);
   }
 
 
@@ -131,7 +120,7 @@ useEffect (() => {
     type="text/javascript" />
     </Helmet>
         <Router>
-          <Home userId={user.id} logout={logoutClick}  />
+          <Home userId={user.id} logout={logoutClick} isLoggedIn={isLoggedIn}/>
           <Routes>
             {/* book search routes */}
             <Route exact path="/" element={<NYTListContainer />} />
@@ -139,13 +128,13 @@ useEffect (() => {
             <Route exact path="/book" element={<BookList />} />
             <Route exact path="/book/:id" element={<BookDetails />} />
 
-            <Route exact path="/users/:id" element={<Profile  token={token} />}/>
-            <Route exact path="/users/account/:id" element={<Account token={token} updateAccount={submitUpdateAccount}/>}/>
+            <Route exact path="/users/:id" element={<Profile  token={token} loggedIn={isLoggedIn} />}/>
+            <Route exact path="/account" element={<Account user={user} loggedIn={isLoggedIn}/>}/>
            
 
           
-            <Route exact path="/login" element={<Login userId={user.id} handleLogin={submitLoginHandle} />} />
-            <Route exact path="/createAccount" element={<CreateAccount handleSignUp={submitSignUpHandle} />} />
+            <Route exact path="/login" element={<Login userId={user.id} handleLogin={submitLoginHandle} loggedIn={isLoggedIn} />} />
+            <Route exact path="/createAccount" element={<CreateAccount handleSignUp={submitSignUpHandle} loggedIn={isLoggedIn} />} />
 
           </Routes>
         </Router>

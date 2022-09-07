@@ -4,7 +4,7 @@ const URL_PREFIX ="http://localhost:3001"
 
 const Api = {
   checkToken:token=>{
-    return fetch(`${URL_PREFIX}/users/check-token`,{
+    return fetch(`${URL_PREFIX}/check-token`,{
         headers:{
           Authorization:`Bearer ${token}`
         }
@@ -40,20 +40,22 @@ const Api = {
     },
     getUserById:userId=>{
       return fetch(`${URL_PREFIX}/users/${userId}`)
-  },
-    // add profilePicURL (MVP)
-    updateAccount:(email, firstName, lastName, username, password, profilePicURL)=>{
-      return(fetch`${URL_PREFIX}/update`,{
+    },
+
+    updateAccount:(email, firstName, lastName, username, token)=>{
+      console.log(lastName);
+      return fetch(`${URL_PREFIX}/api/user/update`,{
         method:"PUT",
         body:JSON.stringify({
           email,
           firstName,
           lastName,
           username,
-          password
+        
         }),
         headers:{
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          Authorization:`Bearer ${token}`
         }
       })
     },
