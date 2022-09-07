@@ -60,7 +60,7 @@ https://image.shutterstock.com/shutterstock/photos/651401656/display_1500/stock-
 
                         <TextField name="changeUsername" label="First username" placeholder="Enter username" variant="filled" fullWidth value={username} onChange={e => setUsername(e.target.value)} />
 
-                        <TextField name="changePassword" label="New Password" placeholder="Enter new Password" variant="filled" fullWidth value={password} onChange={e => setPassword(e.target.value)} />
+                        
 
                         {/* Cloudinary Widget */}
                         <Widget />
