@@ -17,10 +17,18 @@ const BookRatings = () => {
     }
     });
 
-  const [avgPlotValue, setPlotValue] = React.useState();
-  const [avgCharValue, setCharValue] = React.useState();
-  const [avgAccValue, setAccValue] = React.useState();
-  const [avgPacValue, setPacValue] = React.useState();
+  const [avgPlotValue,
+    // setPlotValue
+  ] = React.useState();
+  const [avgCharValue,
+    // setCharValue
+  ] = React.useState();
+  const [avgAccValue,
+    // setAccValue
+  ] = React.useState();
+  const [avgPacValue,
+    // setPacValue
+  ] = React.useState();
 
   return (
     <Box

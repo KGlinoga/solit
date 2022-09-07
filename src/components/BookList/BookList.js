@@ -1,5 +1,5 @@
 import React from 'react';
-import { useGlobalContext } from '../../Context';
+import { useGlobalContext } from '../../context';
 import Book from "./Book";
 import Loading from "../Loader/Loader";
 import coverImg from "../../images/cover_not_found.jpg";

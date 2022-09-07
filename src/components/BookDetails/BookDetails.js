@@ -28,7 +28,7 @@ const BookDetails = (props) => {
         console.log(data);
 
         if(data){
-          const {description, title, covers, subject_places, subject_times, subjects} = data;
+          const { description, title, covers } = data;
           const newBook = {
             description: description ? description.value : "No description found",
             title: title,

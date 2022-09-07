@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import './components/List/index.js';
-import { AppProvider } from './Context';
+import { AppProvider } from './context';
 import './index.css';
 import Home from './pages/Home/Home';
 import About from "./pages/About/About";
@@ -14,6 +14,7 @@ import Login from "./components/Login/login";
 import CreateAccount from "./components/CreateAccount/createAccount";
 import Account from "./pages/Account/Account";
 import Api from './utils/Api.js';
+import { Helmet } from "react-helmet";
 import Shelf from "./components/shelfCarousel/Shelf.js";
 import Form from "./components/BookDetails/Form";
 
@@ -23,10 +24,18 @@ function App() {
     id: 0,
     email: ''
   })
+
   //token information for logged in user
   const [token, setToken] = useState("")
+  
+  const[isLoggedIn, setisLoggedIn]=useState(false);
+  
 
-  useEffect(() => {
+useEffect (() => {
+  authCheck();
+  },[])
+
+function authCheck (){
     const storedToken = localStorage.getItem("token");
     Api.checkToken(storedToken).then(res => {
       if (!res.ok) {
@@ -37,6 +46,7 @@ function App() {
         console.log("valid token")
         res.json().then(data => {
           setToken(storedToken)
+          setisLoggedIn(true);
           setUser({
             id: data.id,
             email: data.email
@@ -44,24 +54,27 @@ function App() {
         })
       }
     })
-  }, [])
+  }
 
   const submitLoginHandle = (email, password) => {
     Api.login(email, password).then(res => {
       if (!res.ok) {
         setUser({ userId: 0, email: "" });
         setToken("")
+        console.log('res not ok')
         return;
       }
       return res.json()
     }).then(data => {
-      console.log(data)
+      console.log(data.token)
       setUser({
         id: data.user.id,
         email: data.user.email
       })
       setToken(data.token)
       localStorage.setItem("token", data.token)
+      setisLoggedIn(true);
+      localStorage.setItem("test", 'hello');
     })
   }
 
@@ -79,30 +92,13 @@ function App() {
         id: data.user.id,
         email: data.user.email,
       })
-      setToken(data.token)
+      setToken(data.token);
+      setisLoggedIn(true);
       localStorage.setItem("token", data.token)
 
     })
   }
-  const submitUpdateAccount = (email, password, firstName, lastName, username) => {
-    Api.updateAccount(email, password, firstName, lastName, username).then(res => {
-      if (!res.ok) {
-        setUser({ userId: 0, email: "" });
-        setToken("")
-        return;
-      }
-      return res.json()
-    }).then(data => {
-      console.log(data)
-      setUser({
-        id: data.user.id,
-        email: data.user.email,
-      })
-      setToken(data.token)
-      localStorage.setItem("token", data.token)
 
-    })
-  }
 
   const logoutClick = () => {
     localStorage.removeItem("token");
@@ -111,6 +107,7 @@ function App() {
       email: ''
     })
     setToken("")
+    setisLoggedIn(false);
   }
 
 const addReview = (review_text, plot_rating, character_rating, accessibility_rating, pacing_rating, review_title, review_author, book_id, userId) => {
@@ -136,8 +133,14 @@ const addReview = (review_text, plot_rating, character_rating, accessibility_rat
   return (
     <div>
       <AppProvider>
+
+    <Helmet>
+    <script src=
+"https://upload-widget.cloudinary.com/global/all.js" 
+    type="text/javascript" />
+    </Helmet>
         <Router>
-          <Home userId={user.id} logout={logoutClick} />
+          <Home userId={user.id} logout={logoutClick} isLoggedIn={isLoggedIn}/>
           <Routes>
             {/* book search routes */}
             <Route exact path="/" element={<NYTListContainer />} />
@@ -145,16 +148,15 @@ const addReview = (review_text, plot_rating, character_rating, accessibility_rat
             <Route exact path="/book" element={<BookList />} />
             <Route exact path="/book/:id" element={<BookDetails user={user} />} />
 
-       
-            <Route exact path="/users/:id" element={<Profile token={token} />}/>
-            <Route exact path="/users/account/:id" element={<Account token={token} updateAccount={submitUpdateAccount}/>}/>
+            <Route exact path="/users/:id" element={<Profile token={token} user={user} loggedIn={isLoggedIn} />}/>
+            <Route exact path="/account" element={<Account user={user} loggedIn={isLoggedIn}/>}/>
            
             <Route exact path="/shelf" element={<Shelf />}/>
             {/*add token={token}? */}
 
           
-            <Route exact path="/login" element={<Login userId={user.id} handleLogin={submitLoginHandle} />} />
-            <Route exact path="/createAccount" element={<CreateAccount handleSignUp={submitSignUpHandle} />} />
+            <Route exact path="/login" element={<Login userId={user.id} handleLogin={submitLoginHandle} loggedIn={isLoggedIn} />} />
+            <Route exact path="/createAccount" element={<CreateAccount handleSignUp={submitSignUpHandle} loggedIn={isLoggedIn} />} />
 
           </Routes>
         </Router>
