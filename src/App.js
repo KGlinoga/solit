@@ -15,8 +15,10 @@ import CreateAccount from "./components/CreateAccount/createAccount";
 import Account from "./pages/Account/Account";
 import Api from './utils/Api.js';
 import { Helmet } from "react-helmet";
-import Shelf from "./components/shelfCarousel/Shelf.js";
-import Form from "./components/BookDetails/Form";
+import Dashboard from "./pages/Dashboard/index.js";
+import Shelves from "./pages/Shelves/index.js";
+// import Shelf from "./components/shelfCarousel/Shelf.js";
+// import Form from "./components/BookDetails/Form";
 
 function App() {
 
@@ -150,9 +152,8 @@ const addReview = (review_text, plot_rating, character_rating, accessibility_rat
 
             <Route exact path="/users/:id" element={<Profile token={token} user={user} loggedIn={isLoggedIn} />}/>
             <Route exact path="/account" element={<Account user={user} loggedIn={isLoggedIn}/>}/>
-           
-            <Route exact path="/shelf" element={<Shelf />}/>
-            {/*add token={token}? */}
+            <Route exact path="/dashboard" element={<Dashboard user={user} loggedIn={isLoggedIn}/>}/>
+            <Route exact path="/shelves" element={<Shelves user={user} loggedIn={isLoggedIn}/>}/>
 
           
             <Route exact path="/login" element={<Login userId={user.id} handleLogin={submitLoginHandle} loggedIn={isLoggedIn} />} />

@@ -19,7 +19,7 @@ import "./style.css";
 // import { useEffect } from 'react';
 
 
-const pages = ['Followers', 'Shelves'];
+const pages = ['Dashboard', 'Shelves', 'Account'];
 // const settings = ['Profile', 'Account', 'Notifications','Logout'];
 
 
@@ -41,6 +41,7 @@ const ResponsiveAppBar = (props) => {
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
+
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
@@ -156,12 +157,6 @@ const ResponsiveAppBar = (props) => {
 
             <SearchForm />
             </div>
-
-              
-
-        
-   
-        
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
