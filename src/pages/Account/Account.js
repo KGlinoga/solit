@@ -58,10 +58,11 @@ https://image.shutterstock.com/shutterstock/photos/651401656/display_1500/stock-
 
                         <TextField name="changePassword" label="New Password" placeholder="Enter new Password" variant="filled" fullWidth value={password} onChange={e => setPassword(e.target.value)} />
 
-                        {/* Cloudinary Widget placeholder */}
+                        {/* Cloudinary Widget */}
                         <Widget />
 
-                        <Button id="updateBtn" variant="contained" type="submit" color='primary' fullWidth >
+                        <Button id="updateBtn" variant="contained" type="submit" color='primary' fullWidth
+                            onClick="handleImageUpload" >
                             Update
                         </Button>
                     </form>
