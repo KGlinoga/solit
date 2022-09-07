@@ -14,7 +14,7 @@ import Login from "./components/Login/login";
 import CreateAccount from "./components/CreateAccount/createAccount";
 import Account from "./pages/Account/Account";
 import Api from './utils/Api.js';
-
+import { Helmet } from "react-helmet";
 
 
 function App() {
@@ -126,6 +126,13 @@ useEffect (() => {
       <AppProvider>
         {/* <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript">
         </script> */}
+        <h1>Geeksforgeeks : How to include an external 
+    JavaScript library to ReactJS?</h1>
+    <Helmet>
+    <script src=
+"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" 
+    type="text/javascript" />
+    </Helmet>
         <Router>
           <Home userId={user.id} logout={logoutClick}  />
           <Routes>

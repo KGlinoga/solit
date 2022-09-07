@@ -7,7 +7,9 @@ import { Cloudinary } from "@cloudinary/url-gen";
 
 function Widget() {
 
-    
+    Cloudinary.openUploadWidget({
+        cloudName: "my-cloud-name", uploadPreset: "preset1"
+    }, (error, result) => { });
 
     // var imgurl = "";
     // var myWidget = Cloudinary.createUploadWidget({
