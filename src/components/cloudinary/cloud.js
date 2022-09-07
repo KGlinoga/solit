@@ -4,13 +4,11 @@
 import React from 'react'
 // import { AdvancedImage } from '@cloudinary/react';
 import { Cloudinary } from "@cloudinary/url-gen";
-import { Helmet } from "react-helmet";
 
 function Widget() {
 
-    // Cloudinary.createUploadWidget({
-    //     cloudName: "so-lit", uploadPreset: "so-lit-pics"
-    // }, (error, result) => { });
+    Cloudinary.openUploadWidget({
+  cloudName: "my-cloud-name", uploadPreset: "preset1" }, (error, result) => { });
 
     // var imgurl = "";
     // var myWidget = Cloudinary.createUploadWidget({
@@ -68,12 +66,7 @@ function Widget() {
     // Render the image in a React component.
     return (
         <div>
-            <Helmet>
-                <script src=
-                    "https://upload-widget.cloudinary.com/global/all.js"
-                    type="text/javascript" />
-            </Helmet>
-            {/* <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script> */}
+            <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
             <h1>Cloudinary for So Lit!</h1>
             <button id="upload_widget" class="cloudinary-button" 
                 // onClick={openWidget}
@@ -88,7 +81,7 @@ function Widget() {
 
             </div>
 
-            {/* <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>  */}
+            <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script> 
             {/* <AdvancedImage cldImg={myImage} /> */}
         </div>
     )
