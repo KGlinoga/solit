@@ -16,11 +16,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from '../createTheme';
 import "./style.css";
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 
 
-const pages = ['Followers', 'Shelves'];
-const settings = ['Profile', 'Account', 'Notifications','Logout'];
+const pages = ['Dashboard', 'Shelves', 'Account'];
+// const settings = ['Profile', 'Account', 'Notifications','Logout'];
 
 
 const ResponsiveAppBar = (props) => {
@@ -40,6 +40,7 @@ const ResponsiveAppBar = (props) => {
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
+
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
@@ -155,12 +156,6 @@ const ResponsiveAppBar = (props) => {
 
             <SearchForm />
             </div>
-
-              
-
-        
-   
-        
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">

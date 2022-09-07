@@ -1,13 +1,13 @@
 import Api from '../../utils/Api';
 import { Divider, Grid, Paper, Typography, Link } from "@mui/material";
 import React, {useState, useEffect} from "react";
-import { useParams } from "react-router";
+// import { useParams } from "react-router";
 
 
-const Profile = () => {
-    const {id} =useParams();
-    // const [email, setEmail]= useState('');
-    // const [shelfs, setShelves]=useState('');
+const Dashboard = (props) => {
+    // const {id} =useParams();
+
+    const [shelfs, setShelves]=useState('');
     // const [followers, setFollowers]=useState('');
     const [username, setUsername]=useState('');
     // const[description, setDescription]=useState('');
@@ -15,15 +15,15 @@ const Profile = () => {
     // const [profilePicURL, setProfilePicURL] = useState('');
 
     useEffect(()=>{
-        Api.getUserById(id).then(res=>res.json()).then(data=>{
-            // setEmail(data.email);
+        Api.getUserById(props.userId).then(res=>res.json()).then(data=>{
+         
             // setFollowers(data.);
-            // setShelves(data.userShelves);
+            setShelves(data.userShelves);
             setUsername(data.username);
             // setDescription(data.)
             // setProfilePicURL(data.profilePicURL);
         })
-    },[id])
+    },[props.userId])
 
     const imgStyle = {width: 50, height:50, borderRadius: "80px"}
     const paperStyle={padding: 10, margin:"20px 20px" }
@@ -42,28 +42,23 @@ const Profile = () => {
                     />
                     <Typography>
                        { username}
-                    </Typography>
-
-
-
-                    
+                    </Typography>  
                     {/* <Typography>
                         Insert Description here
+                    </Typography> */}
+                    <Divider/>
+                    {/* <Typography>
+                    <Link href="/dailyDairies"> Daily Dairies</Link> 
                     </Typography>
                     <Divider/> */}
-                    
-                    <Divider/>
                     <Typography>
-                      <Link href="#" > Your Shelves</Link> 
+                      <Link href="/shelves" > Your Shelves</Link> 
                     </Typography>
                     <Divider/>
                     {/* <Typography>
                     <Link href="/users/account{id}"> Followers </Link> 
-                    </Typography>
-                    <Divider/> */}
-                    {/* <Typography>
-                    <Link href="#"> Account </Link> 
                     </Typography> */}
+                
                 </Paper>
             </Grid>
             {/* <Grid item xs={6}>
@@ -75,4 +70,4 @@ const Profile = () => {
     );
 }
 
-export default Profile;
+export default Dashboard;

@@ -15,6 +15,8 @@ import CreateAccount from "./components/CreateAccount/createAccount";
 import Account from "./pages/Account/Account";
 import Api from './utils/Api.js';
 import { Helmet } from "react-helmet";
+import Dashboard from "./pages/Dashboard/index.js";
+import Shelves from "./pages/Shelves/index.js";
 
 
 function App() {
@@ -130,7 +132,8 @@ function authCheck (){
 
             <Route exact path="/users/:id" element={<Profile  token={token} loggedIn={isLoggedIn} />}/>
             <Route exact path="/account" element={<Account user={user} loggedIn={isLoggedIn}/>}/>
-           
+            <Route exact path="/dashboard" element={<Dashboard user={user} loggedIn={isLoggedIn}/>}/>
+            <Route exact path="/shelves" element={<Shelves user={user} loggedIn={isLoggedIn}/>}/>
 
           
             <Route exact path="/login" element={<Login userId={user.id} handleLogin={submitLoginHandle} loggedIn={isLoggedIn} />} />
