@@ -14,6 +14,7 @@ import Login from "./components/Login/login";
 import CreateAccount from "./components/CreateAccount/createAccount";
 import Account from "./pages/Account/Account";
 import Api from './utils/Api.js';
+import Shelf from "./components/shelfCarousel/Shelf.js";
 
 
 function App() {
@@ -129,6 +130,8 @@ function App() {
             <Route exact path="/users/:id" element={<Profile token={token} />}/>
             <Route exact path="/users/account/:id" element={<Account token={token} updateAccount={submitUpdateAccount}/>}/>
            
+            <Route exact path="/shelf" element={<Shelf />}/>
+            {/*add token={token}? */}
 
           
             <Route exact path="/login" element={<Login userId={user.id} handleLogin={submitLoginHandle} />} />

@@ -1,8 +1,14 @@
-
 import * as React from 'react';
+// import React, {useState,useEffect} from 'react';
+import {useParams} from 'react-router-dom';
 import Box from '@mui/material/Box';
+// import Api from '../../utils'
 
- function Display() {
+
+ function UserReviews() {
+  // const [userId, setUserId] = useState("")
+  // const [review_text, setReviewTest] = useState("")
+  // useEffect(()=>)
   return (
     <div style={{ width: '100%' }}>
 
@@ -23,7 +29,7 @@ import Box from '@mui/material/Box';
           fontWeight: '200',
         }}
       >
-        {"BookLover "}
+        {"BookLover"}
         <Box id="reviewText"
         sx={{
           display: 'inline-flex',

@@ -44,7 +44,7 @@ const Profile = () => {
                     </Typography>
                     <Divider/>
                     <Typography>
-                      <Link href="#" > Your Shelves</Link> 
+                      <Link href="/shelf" > Your Shelves</Link> 
                     </Typography>
                     <Divider/>
                     <Typography>
