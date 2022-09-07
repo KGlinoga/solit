@@ -1,21 +1,24 @@
 import Api from '../../utils/Api';
 import { Divider, Grid, Paper, Typography, Link } from "@mui/material";
 import React, {useState, useEffect} from "react";
-import { useParams } from "react-router";
+// import { useParams } from "react-router";
 
 
-const Profile = () => {
-    const {id} =useParams();
-    const [email, setEmail]= useState('');
-    const [shelfs, setShelves]=useState('');
+const Profile = (props) => {
+    // const {id} =useParams();
+    const [setEmail] = useState('');
+    // netflify err: line above once had email
+    const [setShelves] = useState('');
+    // netflify err: line above once had shelfs 
     // const [followers, setFollowers]=useState('');
     const [username, setUsername]=useState('');
     // const[description, setDescription]=useState('');
     // const [dailyDairies, setDailyDairies]=useState('');
-    const [profilePicURL, setProfilePicURL] = useState('');
+    const [setProfilePicURL] = useState('');
+    // netlify err: line above once had profilePicURL, 
 
     useEffect(()=>{
-        Api.getUserById(id).then(res=>res.json()).then(data=>{
+        Api.getUserById(props.userId).then(res=>res.json()).then(data=>{
             setEmail(data.email);
             // setFollowers(data.);
             setShelves(data.userShelves);
@@ -23,11 +26,11 @@ const Profile = () => {
             // setDescription(data.)
             setProfilePicURL(data.profilePicURL);
         })
-    },[id])
+    }, [props.userId, setEmail, setProfilePicURL, setShelves])
 
     const imgStyle = {width: 50, height:50, borderRadius: "80px"}
     const paperStyle={padding: 10, margin:"20px 20px" }
-    const paperStyle2={padding: 20, margin:"20px 20px" }
+    // const paperStyle2={padding: 20, margin:"20px 20px" }
 
     return(
        <Grid container align="center" justifyContent="space-between">

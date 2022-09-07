@@ -16,11 +16,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from '../createTheme';
 import "./style.css";
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 
 
 const pages = ['Followers', 'Shelves'];
-const settings = ['Profile', 'Account', 'Notifications','Logout'];
+// const settings = ['Profile', 'Account', 'Notifications','Logout'];
 
 
 const ResponsiveAppBar = (props) => {
@@ -35,7 +35,8 @@ const ResponsiveAppBar = (props) => {
 
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [ setAnchorElUser] = React.useState(null);
+// neflify error: above line once had anchorElUser, but is never used -KG
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -48,9 +49,9 @@ const ResponsiveAppBar = (props) => {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+  // const handleCloseUserMenu = () => {
+  //   setAnchorElUser(null);
+  // };
 
 
   return (
