@@ -12,6 +12,7 @@ const Profile = () => {
     const [username, setUsername]=useState('');
     // const[description, setDescription]=useState('');
     // const [dailyDairies, setDailyDairies]=useState('');
+    const [profilePicURL, setProfilePicURL] = useState('');
 
     useEffect(()=>{
         Api.getUserById(id).then(res=>res.json()).then(data=>{
@@ -20,6 +21,7 @@ const Profile = () => {
             setShelves(data.userShelves);
             setUsername(data.username);
             // setDescription(data.)
+            setProfilePicURL(data.profilePicURL);
         })
     },[id])
 
@@ -31,10 +33,20 @@ const Profile = () => {
        <Grid container align="center" justifyContent="space-between">
             <Grid item xs={12}>
                 <Paper style={paperStyle}>
-                    <img style={imgStyle} alt="profile" src="https://unsplash.com/photos/_M6gy9oHgII" />
+                    {/* this is the profile image when Cloudinary is in, replace that URL with the app generated thing*/}
+                    <img style={imgStyle} alt="profile" src=
+                        
+                        
+                        "https://image.shutterstock.com/shutterstock/photos/651401656/display_1500/stock-photo-cat-man-651401656.jpg"
+                    
+                    />
                     <Typography>
                        { username}
                     </Typography>
+
+
+
+                    
                     <Typography>
                         Insert Description here
                     </Typography>

@@ -5,6 +5,9 @@ import "./About.css";
 const About = () => {
   return (
     <section className='about'>
+
+
+      
       <div className='container'>
         <div className='section-title'>
           <h2>About</h2>

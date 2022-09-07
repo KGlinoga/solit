@@ -3,6 +3,7 @@ import { Divider, Grid, Paper, Typography, Link, TextField, Button } from "@mui/
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { Token } from '@mui/icons-material';
+import Widget from "../../components/cloudinary/cloud";
 
 
 const Account = (props) => {
@@ -39,7 +40,9 @@ const Account = (props) => {
         <Grid container align="center" justifyContent="space-between">
             <Grid item xs={12}>
                 <Paper style={paperStyle}>
-                    <img style={imgStyle} alt="profile" src="https://unsplash.com/photos/_M6gy9oHgII" />
+                    <img style={imgStyle} alt="profile" src="
+https://image.shutterstock.com/shutterstock/photos/651401656/display_1500/stock-photo-cat-man-651401656.jpg
+" />
                     <Typography>
                         {username}
                     </Typography>
@@ -48,15 +51,22 @@ const Account = (props) => {
                     </Typography> */}
                     <Divider />
                     <form onSubmit={submit}>
-                        <TextField name="changeFirstName" label="First name" placeholder="Enter First name" variant="filled" fullWidth value={firstName} onChange={e => setFirstName(e.target.value)} />
 
+                        <TextField name="changeFirstName" label="First name" placeholder="Enter First name" variant="filled" fullWidth value={firstName} onChange={e => setFirstName(e.target.value)} />
+                        
                         <TextField name="changeLastName" label="Last name" placeholder="Enter Last Name" variant="filled" fullWidth value={lastName} onChange={e => setLastName(e.target.value)} />
 
                         <TextField name="changeEmail" label="Email" placeholder="Enter Email" variant="filled" fullWidth value={email} onChange={e => setEmail(e.target.value)} />
 
                         <TextField name="changeUsername" label="First username" placeholder="Enter username" variant="filled" fullWidth value={username} onChange={e => setUsername(e.target.value)} />
 
-                        <Button id="updateBtn" variant="contained" type="submit" color='primary' fullWidth >
+                        <TextField name="changePassword" label="New Password" placeholder="Enter new Password" variant="filled" fullWidth value={password} onChange={e => setPassword(e.target.value)} />
+
+                        {/* Cloudinary Widget */}
+                        <Widget />
+
+                        <Button id="updateBtn" variant="contained" type="submit" color='primary' fullWidth
+                            onClick="handleImageUpload" >
                             Update
                         </Button>
                     </form>

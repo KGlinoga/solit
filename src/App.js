@@ -14,6 +14,7 @@ import Login from "./components/Login/login";
 import CreateAccount from "./components/CreateAccount/createAccount";
 import Account from "./pages/Account/Account";
 import Api from './utils/Api.js';
+import { Helmet } from "react-helmet";
 
 
 function App() {
@@ -112,6 +113,12 @@ function authCheck (){
   return (
     <div>
       <AppProvider>
+
+    <Helmet>
+    <script src=
+"https://upload-widget.cloudinary.com/global/all.js" 
+    type="text/javascript" />
+    </Helmet>
         <Router>
           <Home userId={user.id} logout={logoutClick} isLoggedIn={isLoggedIn}/>
           <Routes>
