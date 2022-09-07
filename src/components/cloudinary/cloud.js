@@ -3,12 +3,17 @@
 
 import React from 'react'
 // import { AdvancedImage } from '@cloudinary/react';
-// import { Cloudinary } from "@cloudinary/url-gen";
+import { Cloudinary } from "@cloudinary/url-gen";
 
 function Widget() {
 
+    // const openWidget = () => {
+    //     //     // e.preventDefault();
+    //     myWidget();
+    // };
+
     // var imgurl = "";
-    // var myWidget = cloudinary.createUploadWidget({
+    // var myWidget = Cloudinary.createUploadWidget({
     //     cloudName: 'so-lit',
     //     uploadPreset: 'so-lit-pics'
     // }, (error, result) => {
@@ -60,6 +65,7 @@ function Widget() {
         <div>
             <h1>Cloudinary for So Lit!</h1>
             <button id="upload_widget" class="cloudinary-button">
+                {/* onClick={openWidget}> */}
                 Choose your Profile Picture!
             </button>
             {/* <AdvancedImage cldImg={myImage} /> */}
