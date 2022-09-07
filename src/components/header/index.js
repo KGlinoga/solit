@@ -19,7 +19,11 @@ import "./style.css";
 // import { useEffect } from 'react';
 
 
+<<<<<<< HEAD
 const pages = ['Dashboard', 'Shelves', 'Account'];
+=======
+const pages = ['Followers', 'Shelves'];
+>>>>>>> dev
 // const settings = ['Profile', 'Account', 'Notifications','Logout'];
 
 
@@ -35,7 +39,8 @@ const ResponsiveAppBar = (props) => {
 
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [ setAnchorElUser] = React.useState(null);
+// neflify error: above line once had anchorElUser, but is never used -KG
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -49,9 +54,9 @@ const ResponsiveAppBar = (props) => {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+  // const handleCloseUserMenu = () => {
+  //   setAnchorElUser(null);
+  // };
 
 
   return (

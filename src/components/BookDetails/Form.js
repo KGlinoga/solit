@@ -1,226 +1,167 @@
-import React from 'react';
+import React, { useState } from "react";
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Box from '@mui/material/Box';
-import FormLabel from '@mui/material/FormLabel';
-import FormControl from '@mui/material/FormControl';
-import FormGroup from '@mui/material/FormGroup';
 import Checkbox from '@mui/material/Checkbox';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Slider from '@mui/material/Slider';
 import Stack from '@mui/material/Stack';
-// import { Editor } from '@tinymce/tinymce-react';
-// import './index.css';
+import { Grid } from "@mui/material";
+import AddReview from './Page';
+import Api from '../../utils/Api';
+import {useParams} from 'react-router';
 
 const Form = () => {
-  // export function CheckboxesGroup() {
-    const [state, setState] = React.useState({
+  //set review text, ratings, book id, and user id
+  const [review_text, setReviewText] = useState("")
+  const [plot_rating, setPlotRating] = useState("")
+  const [character_rating, setCharacterRating] = useState("")
+  const [accessibility_rating, setAccessibilityRating] = useState("")
+  const [pacing_rating, setPacingRating] = useState("")
+  //these next two are currently not in our db but if they are added i'll uncomment them out
+  const [review_title, setReviewTitle] = useState("")
+  const [review_author, setReviewAuthor] = useState("")
+  // do i need to make useStates for these two? or do they automatically get associated with the rest of the props?
 
-    })
+
+  const submit = (e) => {
+    // take info from book page, search db for book that match both title and author (GET ONE -- API.getBook find one book based on title/author OR openlibrary key )
+    // if returns, take book id from result (foundBook)
+    // if it doesn't
+    // post independent of review, post book to our database so it exists and can have a review associated
+    // 
+    e.preventDefault();
+    const {ol_key} = useParams();
+
+    //get functionality
     
-  // const editorRef = useRef(null);
-  // const log = () => {
-  //   if (editorRef.current) {
-  //     console.log(editorRef.current.getContent());
-  //   }
+    //post functionality
+    Api.addReview(review_text, plot_rating, character_rating, accessibility_rating, pacing_rating, ol_key, review_title, review_author)
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-      setState({
-        ...state,
-        [event.target.name]: event.target.checked,
-      });
-    };
+    //response.id
+  }
+
   const marks = [
     {
-      value: 0,
-      label: '',
-    },
-    {
       value: 20,
+      // scaledValue: ,
       label: '🔥',
     },
     {
       value: 40,
-      label: '🔥🔥',
+      // scaledValue: 40,
+      label: '',
     },
     {
       value: 60,
-      label: '🔥🔥🔥',
+      // scaledValue: 60,
+      label: '🔥🔥',
     },
     {
       value: 80,
-      label: '🔥🔥🔥🔥',
+      // scaledValue: 80,
+      label: '',
     },
     {
       value: 100,
-      label: '🔥🔥🔥🔥🔥',
+      // scaledValue: 100,
+      label: '🔥🔥🔥',
     }
   ];
-  function valuetext(value: number) {
-    return `${value}°C`;
-  }
-  
+  // function valuetext(value: number) {
+  //   return `${value}°C`;
+  // }
+
   // export default function DiscreteSliderMarks() {
-  
+
   return (
-    <div className='title-spoilers'>
-      <TextField fullWidth label="Title your review here" id="fullWidth" />
-      <FormControlLabel control={<Checkbox />} label="Spoilers included?" />
-
 
     <div className='title-spoilers'>
-      <TextField fullWidth
-            id="outlined-multiline-flexible"
+      <form onSubmit={submit}>
+        <Grid item>
+          <TextField fullWidth label="Title your review here" id="reviewTitle" value={review_title} onChange={e => setReviewTitle(e.target.value)} />
+          <TextField fullWidth label="What name would you like associated with your review?" id="reviewAuthor" value={review_author} onChange={e => setReviewAuthor(e.target.value)} />
+          <FormControlLabel control={<Checkbox />} label="Spoilers included?" id="spoliersBoolean" />
+          <TextField fullWidth
+            id="reviewText"
             label="Write your review here"
             multiline
-            minRows={12}
+            margin="normal"
+            minRows={4}
             //  value={value}
-            onChange={handleChange}/>
-      {/* <>
-      <Editor
-        apiKey='your-api-key'
-        onInit={(evt, editor) => editorRef.current = editor}
-        initialValue="<p>This is the initial content of the editor.</p>"
-        init={{
-          height: 500,
-          menubar: false,
-          plugins: [
-            'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
-            'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
-            'insertdatetime', 'media', 'table', 'code', 'help', 'wordcount'
-          ],
-          toolbar: 'undo redo | blocks | ' +
-            'bold italic forecolor | alignleft aligncenter ' +
-            'alignright alignjustify | bullist numlist outdent indent | ' +
-            'removeformat | help',
-          content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
-        }}
-      />
-      <button onClick={log}>Log editor content</button>
-    </>
- */}
+            //commenting this portion out, might affect handleChange function
+            // onChange={handleChange}
+            required value={review_text} onChange={e => setReviewText(e.target.value)} />
+        </Grid>
 
-    <div className='emotions-intake'>
-      <Box sx={{ display: 'flex' }}>
-        <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
-        <FormLabel component="legend">Which emotions did this book bring up for you? Select as many as apply!</FormLabel>
-          <FormGroup>
-            <FormControlLabel
-              control={
-                <Checkbox  onChange={handleChange} name="anger" />
-              }
-              label="Anger"
+        <div className='sliders'>
+          <Box sx={{ width: 300 }}>
+            <Typography id="track-false-slider" gutterBottom>
+              How would you rate these elements in the book?
+            </Typography>
+            <Typography id="track-false-slider" gutterBottom>
+              Plot
+            </Typography>
+            <Slider
+              aria-label="Custom marks"
+              defaultValue={0}
+              //  getAriaValueText={valuetext}
+              step={20}
+              valueLabelDisplay="auto"
+              marks={marks}
+              value={plot_rating} onChange={e => setPlotRating(e.target.value)}
             />
-            <FormControlLabel
-              control={
-                <Checkbox onChange={handleChange} name="grief" />
-              }
-              label="Grief"
+            <Typography id="track-false-slider" gutterBottom>
+              Characters
+            </Typography>
+            <Slider
+              aria-label="Custom marks"
+              defaultValue={0}
+              // getAriaValueText={valuetext}
+              step={20}
+              valueLabelDisplay="auto"
+              marks={marks}
+              value={character_rating} onChange={e => setCharacterRating(e.target.value)}
             />
-            <FormControlLabel
-              control={
-                <Checkbox onChange={handleChange} name="excitement" />
-              }
-              label="Excitement"
+            <Typography id="track-false-slider" gutterBottom>
+              Accessibility
+            </Typography>
+            <Slider
+              aria-label="Custom marks"
+              defaultValue={0}
+              // getAriaValueText={valuetext}
+              step={20}
+              valueLabelDisplay="auto"
+              marks={marks}
+              value={accessibility_rating} onChange={e => setAccessibilityRating(e.target.value)}
             />
-            <FormControlLabel
-              control={
-                <Checkbox onChange={handleChange} name="fear" />
-              }
-            label="Fear"
-          />
-            <FormControlLabel
-              control={
-                <Checkbox onChange={handleChange} name="Humor" />
-              }
-              label="Humor"
+            <Typography id="track-false-slider" gutterBottom>
+              Pacing
+            </Typography>
+            <Slider
+              aria-label="Custom marks"
+              defaultValue={0}
+              // getAriaValueText={valuetext}
+              step={20}
+              valueLabelDisplay="auto"
+              marks={marks}
+              value={pacing_rating} onChange={e => setPacingRating(e.target.value)}
             />
-              <FormControlLabel
-              control={
-                <Checkbox onChange={handleChange} name="joy" />
-              }
-              label="Joy"
-            />
-              <FormControlLabel
-              control={
-                <Checkbox onChange={handleChange} name="love" />
-              }
-              label="Love"
-            />
-            <FormControlLabel
-                control={
-              <Checkbox onChange={handleChange} name="suprise" />
-              }
-            label="Suprise"
-            />
-          </FormGroup>
-        </FormControl>
-      </Box>
-  <div className='sliders'>
-    <Box sx={{ width: 300 }}>
-    <Typography id="track-false-slider" gutterBottom>
-          How would you rate these elements in the book?
-        </Typography>
-        <Typography id="track-false-slider" gutterBottom>
-          Plot
-        </Typography>
-        <Slider
-          aria-label="Custom marks"
-          defaultValue={60}
-          getAriaValueText={valuetext}
-          step={20}
-          valueLabelDisplay="auto"
-          marks={marks}
-          min={0}
-          max={5}
-        />
-        <Typography id="track-false-slider" gutterBottom>
-        Characters
-        </Typography>
-        <Slider
-          aria-label="Custom marks"
-          defaultValue={3}
-          getAriaValueText={valuetext}
-          step={1}
-          valueLabelDisplay="auto"
-          marks={marks}
-        />
-      <Typography id="track-false-slider" gutterBottom>
-          Accessibility
-        </Typography>
-        <Slider
-          aria-label="Custom marks"
-          defaultValue={3}
-          getAriaValueText={valuetext}
-          step={1}
-          valueLabelDisplay="auto"
-          marks={marks}
-        />
-        <Typography id="track-false-slider" gutterBottom>
-          Pacing
-        </Typography>
-        <Slider
-          aria-label="Custom marks"
-          defaultValue={3}
-          getAriaValueText={valuetext}
-          step={1}
-          valueLabelDisplay="auto"
-          marks={marks}
-        />
-      </Box>
+          </Box>
 
-  <div className='add-submit-btns'>
-        <Stack spacing={2} direction="row"> 
-          <Button variant="outlined">Add to Shelf</Button>
-          <Button variant="contained">Submit</Button>
-        </Stack>
+          <div className='add-submit-btns'>
+            <Stack spacing={2} direction="row">
+              {/* <Button variant="outlined" id="shelfBtn">Add to Shelf</Button> */}
+              <Button type="submit" variant="contained" id="submitBtn">Submit</Button>
+            </Stack>
 
-      </div>
+          </div>
+
         </div>
-        </div>
-        </div>
-        </div>
+      </form>
+    </div >
+
   )
 };
 

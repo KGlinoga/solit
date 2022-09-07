@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import './components/List/index.js';
-import { AppProvider } from './Context';
+import { AppProvider } from './context';
 import './index.css';
 import Home from './pages/Home/Home';
 import About from "./pages/About/About";
@@ -17,7 +17,8 @@ import Api from './utils/Api.js';
 import { Helmet } from "react-helmet";
 import Dashboard from "./pages/Dashboard/index.js";
 import Shelves from "./pages/Shelves/index.js";
-
+import Shelf from "./components/shelfCarousel/Shelf.js";
+import Form from "./components/BookDetails/Form";
 
 function App() {
 
@@ -111,6 +112,25 @@ function authCheck (){
     setisLoggedIn(false);
   }
 
+const addReview = (review_text, plot_rating, character_rating, accessibility_rating, pacing_rating, review_title, review_author, book_id, userId) => {
+    Api.postReviewText(review_text, plot_rating, character_rating, accessibility_rating, pacing_rating, review_title, review_author, book_id, userId).then(res => {
+      if (!res.ok) {
+        setUser({ userId: 0, email: "" });
+        setToken("")
+        return;
+      }
+      return res.json()
+    }).then(data => {
+      console.log(data)
+      setUser({
+        id: data.user.id,
+        email: data.user.email,
+      })
+      setToken(data.token)
+      localStorage.setItem("token", data.token)
+
+    })
+  }
 
   return (
     <div>
@@ -128,9 +148,9 @@ function authCheck (){
             <Route exact path="/" element={<NYTListContainer />} />
             <Route exact path="/about" element={<About />} />
             <Route exact path="/book" element={<BookList />} />
-            <Route exact path="/book/:id" element={<BookDetails />} />
+            <Route exact path="/book/:id" element={<BookDetails user={user} />} />
 
-            <Route exact path="/users/:id" element={<Profile  token={token} loggedIn={isLoggedIn} />}/>
+            <Route exact path="/users/:id" element={<Profile token={token} user={user} loggedIn={isLoggedIn} />}/>
             <Route exact path="/account" element={<Account user={user} loggedIn={isLoggedIn}/>}/>
             <Route exact path="/dashboard" element={<Dashboard user={user} loggedIn={isLoggedIn}/>}/>
             <Route exact path="/shelves" element={<Shelves user={user} loggedIn={isLoggedIn}/>}/>

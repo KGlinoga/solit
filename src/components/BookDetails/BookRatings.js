@@ -5,6 +5,7 @@ import Rating from "@mui/material/Rating";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import Typography from "@mui/material/Typography";
+import Page from './Page';
 
 const BookRatings = () => {
     const StyledRating = styled(Rating)({
@@ -16,10 +17,18 @@ const BookRatings = () => {
     }
     });
 
-  const [avgPlotValue, setPlotValue] = React.useState();
-  const [avgCharValue, setCharValue] = React.useState();
-  const [avgAccValue, setAccValue] = React.useState();
-  const [avgPacValue, setPacValue] = React.useState();
+  const [avgPlotValue,
+    // setPlotValue
+  ] = React.useState();
+  const [avgCharValue,
+    // setCharValue
+  ] = React.useState();
+  const [avgAccValue,
+    // setAccValue
+  ] = React.useState();
+  const [avgPacValue,
+    // setPacValue
+  ] = React.useState();
 
   return (
     <Box

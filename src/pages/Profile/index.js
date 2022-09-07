@@ -1,7 +1,7 @@
 import Api from '../../utils/Api';
 import { Divider, Grid, Paper, Typography, Link } from "@mui/material";
 import React, {useState, useEffect} from "react";
-import { useParams } from "react-router";
+// import { useParams } from "react-router";
 
 
 const Profile = () => {
@@ -23,11 +23,11 @@ const Profile = () => {
             // setDescription(data.)
             // setProfilePicURL(data.profilePicURL);
         })
-    },[id])
+    }, [props.userId, setEmail, setProfilePicURL, setShelves])
 
     const imgStyle = {width: 50, height:50, borderRadius: "80px"}
     const paperStyle={padding: 10, margin:"20px 20px" }
-    const paperStyle2={padding: 20, margin:"20px 20px" }
+    // const paperStyle2={padding: 20, margin:"20px 20px" }
 
     return(
        <Grid container align="center" justifyContent="space-between">
@@ -54,7 +54,7 @@ const Profile = () => {
                     
                     <Divider/>
                     <Typography>
-                      <Link href="#" > Your Shelves</Link> 
+                      <Link href="/shelf" > Your Shelves</Link> 
                     </Typography>
                     <Divider/>
                     {/* <Typography>
