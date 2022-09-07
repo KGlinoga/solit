@@ -6,10 +6,52 @@ import React from 'react'
 import { Cloudinary } from "@cloudinary/url-gen";
 
 function Widget() {
+// ...
+const openWidget = () => {
+    // create the widget
+    window.cloudinary.createUploadWidget(
+        {
+            cloudName: 'so-lit',
+            uploadPreset: 'so-lit-pics',
+        },
+        (error, result) => {
+            this.setState({
+                imageUrl: result.info.secure_url,
+                imageAlt: `An image of ${result.info.original_filename}`
+            })
+        },
+    ).open(); // open up the widget after creation
+};
 
-    const myWid = Cloudinary.openUploadWidget({
-        cloudName: "my-cloud-name", uploadPreset: "preset1"
-    }, (error, result) => { });
+//...
+
+    
+    // ...
+    // openWidget = () => {
+    //     // create the widget
+    //     const widget = window.Cloudinary.createUploadWidget(
+    //         {
+    //             cloudName: 'john',
+    //             uploadPreset: 'qv5rfbwg',
+    //         },
+    //         (error, result) => {
+    //             if (result.event === 'success') {
+    //                 this.setState({
+    //                     imageUrl: result.info.secure_url,
+    //                     imageAlt: `An image of ${result.info.original_filename}`
+    //                 })
+    //             }
+    //         },
+    //     );
+    //     widget.open(); // open up the widget after creation
+    // };
+
+//...
+
+    
+    // Cloudinary.openUploadWidget({
+    //     cloudName: "my-cloud-name", uploadPreset: "preset1"
+    // }, (error, result) => { });
 
     // var imgurl = "";
     // var myWidget = Cloudinary.createUploadWidget({
@@ -84,8 +126,8 @@ function Widget() {
             <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
             <h1>Cloudinary for So Lit!</h1>
             <myWid />
-            <button id="upload_widget" class="cloudinary-button" 
-                // onClick={openWidget}
+            <button type="button" id="upload_widget" className="cloudinary-button btn widget-btn" 
+                onClick={openWidget}
             > 
                 Choose your Profile Picture!
             </button>
