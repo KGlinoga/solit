@@ -17,8 +17,8 @@ import Api from './utils/Api.js';
 import { Helmet } from "react-helmet";
 import Dashboard from "./pages/Dashboard/index.js";
 import Shelves from "./pages/Shelves/index.js";
-import Shelf from "./components/shelfCarousel/Shelf.js";
-import Form from "./components/BookDetails/Form";
+// import Shelf from "./components/shelfCarousel/Shelf.js";
+// import Form from "./components/BookDetails/Form";
 
 function App() {
 

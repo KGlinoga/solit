@@ -2,11 +2,6 @@ import Api from '../../utils/Api';
 import { Divider, Grid, Paper, Typography, TextField, Button } from "@mui/material";
 // netlify err: line above used to have Link
 import React, { useState, useEffect } from "react";
-<<<<<<< HEAD
-=======
-// import { useParams } from "react-router";
-// import { Token } from '@mui/icons-material';
->>>>>>> dev
 import Widget from "../../components/cloudinary/cloud";
 
 

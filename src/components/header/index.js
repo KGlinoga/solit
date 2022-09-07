@@ -19,11 +19,7 @@ import "./style.css";
 // import { useEffect } from 'react';
 
 
-<<<<<<< HEAD
 const pages = ['Dashboard', 'Shelves', 'Account'];
-=======
-const pages = ['Followers', 'Shelves'];
->>>>>>> dev
 // const settings = ['Profile', 'Account', 'Notifications','Logout'];
 
 
