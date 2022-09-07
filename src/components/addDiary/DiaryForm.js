@@ -23,29 +23,12 @@ const DiaryForm = () => {
   //   }
   // const [dateValue, setValue] = React.useState<Dayjs | null>(null);
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-      setState({
-        ...state,
-        [event.target.name]: event.target.checked,
-      });
-    };
-  const marks = [
-    {
-      value: 0,
-      label: '🔥',
-    },
-    {
-      value: 50,
-      label: '🔥🔥',
-    },
-    {
-      value: 100,
-      label: '🔥🔥🔥',
-    }
-  ];
-  function valuetext(value: number) {
-    return `${value}°C`;
-  }
+    // const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    //   setState({
+    //     ...state,
+    //     [event.target.name]: event.target.checked,
+    //   });
+    // };
   
   // export default function DiscreteSliderMarks() {
 
@@ -60,7 +43,7 @@ const DiaryForm = () => {
   return (
     <div className='title-spoilers'>
       <h3 id='header'>Daily Diary</h3>
-      <TextField margin="normal" fullWidth label="Title your entry here" id="fullWidth" />
+      <TextField margin="normal" fullWidth label="Title your entry here" id="diaryTitle" />
       <TextField margin="dense" fullWidth label="What book are you currently reading?" id="bookTitle" />
       
       {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -76,7 +59,7 @@ const DiaryForm = () => {
 
     <div className='title-spoilers'>
       <TextField margin="normal" fullWidth
-            id="outlined-multiline-flexible"
+            id="diaryText"
             label="What would you like to write?"
             multiline
             minRows={12}
