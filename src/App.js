@@ -124,13 +124,10 @@ useEffect (() => {
   return (
     <div>
       <AppProvider>
-        {/* <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript">
-        </script> */}
-        <h1>Geeksforgeeks : How to include an external 
-    JavaScript library to ReactJS?</h1>
+
     <Helmet>
     <script src=
-"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" 
+"https://upload-widget.cloudinary.com/global/all.js" 
     type="text/javascript" />
     </Helmet>
         <Router>
