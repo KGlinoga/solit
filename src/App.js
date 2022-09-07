@@ -16,6 +16,7 @@ import Account from "./pages/Account/Account";
 import Api from './utils/Api.js';
 
 
+
 function App() {
 
   const [user, setUser] = useState({
@@ -123,6 +124,8 @@ useEffect (() => {
   return (
     <div>
       <AppProvider>
+        {/* <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript">
+        </script> */}
         <Router>
           <Home userId={user.id} logout={logoutClick}  />
           <Routes>
