@@ -7,8 +7,23 @@ import { Cloudinary } from "@cloudinary/url-gen";
 
 function Widget() {
 
-    Cloudinary.openUploadWidget({
-  cloudName: "my-cloud-name", uploadPreset: "preset1" }, (error, result) => { });
+    const myWid = Cloudinary.openUploadWidget({
+        cloudName: "my-cloud-name", uploadPreset: "preset1"
+    }, (error, result) => { });
+
+    // var imgurl = "";
+    // var myWidget = Cloudinary.createUploadWidget({
+    //     cloudName: 'so-lit',
+    //     uploadPreset: 'so-lit-pics'
+    // }, (error, result) => {
+    //     if (!error && result && result.event === "success") {
+    //         console.log('Done! Here is the image info: ', result);
+
+    //         console.log("ak ", result.info.secure_url);
+    //         imgurl = result.info.secure_url;
+    //     }
+    // }
+    // )
 
     // var imgurl = "";
     // var myWidget = Cloudinary.createUploadWidget({
@@ -68,19 +83,18 @@ function Widget() {
         <div>
             <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
             <h1>Cloudinary for So Lit!</h1>
+            <myWid />
             <button id="upload_widget" class="cloudinary-button" 
                 // onClick={openWidget}
             > 
                 Choose your Profile Picture!
             </button>
-
-            
             <div class="col-12">
-                <label for="image">Product Image</label>
-                <button type="button" id="upload_widget" class="cloudinary-button form-control  teal darken-4" name="image">Upload Image</button>
-
+                
+          {/* <label for="image">Product Image</label>
+          <button type="button" id="upload_widget" class="cloudinary-button form-control  teal darken-4" name="image">Upload Image</button> */}
+         
             </div>
-
             <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script> 
             {/* <AdvancedImage cldImg={myImage} /> */}
         </div>
