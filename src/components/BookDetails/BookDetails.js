@@ -8,10 +8,12 @@ import { useNavigate } from 'react-router-dom';
 import AddReview from './Page';
 import BookRatings from './BookRatings';
 import UserReviews from './UserReviews';
+import Form from './Form';
+
 
 const URL = "https://openlibrary.org/works/";
 
-const BookDetails = () => {
+const BookDetails = (props) => {
   const {id} = useParams();
   const [loading, setLoading] = useState(false);
   const [book, setBook] = useState(null);
@@ -46,8 +48,16 @@ const BookDetails = () => {
   }, [id]);
 
   if(loading) return <Loading />;
+// section for showing up
+//   if(AddReview){
+//     navigate(`/review-from-token`)
+//   }
+// },[AddReview]
 
-  return (
+return (
+  <div className="Login">
+      {/* <AuthForm type="Login" handleSubmit = {props.handleLogin}/>
+      <AuthForm type="Signup" handleSubmit = {props.handleSignup}/> */}
     <section className='book-details'>
       <div className='container'>
         <button type='button' className='flex flex-c back-btn' onClick={() => navigate("/book")}>
@@ -73,13 +83,16 @@ const BookDetails = () => {
                 <UserReviews/>
             </div>
             <div className="addReviewbtn">
-              <AddReview />
+              <AddReview user={user} />
+            </div>
+            <div>
+
             </div>
           </div>
         </div>
       </div>
     </section>
-  )
-}
+    </div>
+)}
 
-export default BookDetails
+export default BookDetails;

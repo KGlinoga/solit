@@ -2,13 +2,21 @@ import * as React from 'react';
 // import React, {useState,useEffect} from 'react';
 import {useParams} from 'react-router-dom';
 import Box from '@mui/material/Box';
-// import Api from '../../utils'
+import {useEffect, useState} from 'react';
+import Api from '../../utils'
 
 
- function UserReviews() {
+function UserReviews() {
   // const [userId, setUserId] = useState("")
-  // const [review_text, setReviewTest] = useState("")
-  // useEffect(()=>)
+  const [review_text, setReviewText] = useState("")
+
+  const {ol_key} = useParams("")
+
+  useEffect(()=>{
+    Api.getReviews(ol_key).then(res => res.json().then(data => {
+      setReviewText(data.review)
+    }))
+  })
   return (
     <div style={{ width: '100%' }}>
 

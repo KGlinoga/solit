@@ -15,7 +15,7 @@ import CreateAccount from "./components/CreateAccount/createAccount";
 import Account from "./pages/Account/Account";
 import Api from './utils/Api.js';
 import Shelf from "./components/shelfCarousel/Shelf.js";
-
+import Form from "./components/BookDetails/Form";
 
 function App() {
 
@@ -113,6 +113,25 @@ function App() {
     setToken("")
   }
 
+const addReview = (review_text, plot_rating, character_rating, accessibility_rating, pacing_rating, review_title, review_author, book_id, userId) => {
+    Api.postReviewText(review_text, plot_rating, character_rating, accessibility_rating, pacing_rating, review_title, review_author, book_id, userId).then(res => {
+      if (!res.ok) {
+        setUser({ userId: 0, email: "" });
+        setToken("")
+        return;
+      }
+      return res.json()
+    }).then(data => {
+      console.log(data)
+      setUser({
+        id: data.user.id,
+        email: data.user.email,
+      })
+      setToken(data.token)
+      localStorage.setItem("token", data.token)
+
+    })
+  }
 
   return (
     <div>
@@ -124,7 +143,7 @@ function App() {
             <Route exact path="/" element={<NYTListContainer />} />
             <Route exact path="/about" element={<About />} />
             <Route exact path="/book" element={<BookList />} />
-            <Route exact path="/book/:id" element={<BookDetails />} />
+            <Route exact path="/book/:id" element={<BookDetails user={user} />} />
 
        
             <Route exact path="/users/:id" element={<Profile token={token} />}/>

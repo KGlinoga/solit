@@ -56,8 +56,8 @@ const Api = {
     },
     //insert new method
     // post method for adding a new review
-    addReview:(review_text, plot_rating, character_rating, accessibility_rating, pacing_rating, book_id, userId, review_title, review_author)=>{
-      return(fetch)`${URL_PREFIX}/review-from-token`,{
+    addReview:(review_text, plot_rating, character_rating, accessibility_rating, pacing_rating, ol_key, review_title, review_author)=>{
+      return fetch(`${URL_PREFIX}/review-from-token`,{
         method:"POST",
         body:JSON.stringify({
           review_text,
@@ -65,15 +65,15 @@ const Api = {
           character_rating,
           accessibility_rating, 
           pacing_rating, 
-          book_id, 
-          userId,
+          ol_key, 
           review_title, 
           review_author
         }),
         headers:{
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          Authorization:`Bearer ${token}`
         }
-      }
+      })
       },
      // post method for adding a new diary entry
      addDiary:(diary_title, diary_book, diary_text, userId)=>{
@@ -107,10 +107,10 @@ const Api = {
       }
   },
   // get method for getting a review
-    getReview:()=>{
-      return(fetch)`${URL_PREFIX}/review-from-token`,{
+    getReviews:()=>{
+      return fetch(`${URL_PREFIX}/${ol_key}`,{
         method:"GET"
-      }
+      })
       },
     // get method for getting diary entries
     getDiary:()=>{
