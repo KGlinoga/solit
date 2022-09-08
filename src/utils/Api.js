@@ -1,6 +1,6 @@
 
-// const URL_PREFIX= "https://solit-backend.herokuapp.com"
-const URL_PREFIX ="http://localhost:3001"
+const URL_PREFIX= "https://solit-backend.herokuapp.com"
+// const URL_PREFIX ="http://localhost:3001"
 
 const Api = {
   checkToken:token=>{
@@ -57,17 +57,17 @@ const Api = {
           "Content-Type": "application/json",
           Authorization:`Bearer ${token}`
         }
-      }
+      })
   },
   // get method for getting a review
-    getReviews:()=>{
+    getReviews:(ol_key)=>{
       return fetch(`${URL_PREFIX}/${ol_key}`,{
         method:"GET"
       })
       },
     //insert new method
     // post method for adding a new review
-    addReview:(review_text, plot_rating, character_rating, accessibility_rating, pacing_rating, ol_key, review_title, review_author)=>{
+    addReview:(review_text, plot_rating, character_rating, accessibility_rating, pacing_rating, ol_key, review_title, review_author,token)=>{
       return fetch(`${URL_PREFIX}/review-from-token`,{
         method:"POST",
         body:JSON.stringify({
@@ -103,7 +103,7 @@ const Api = {
       }, 
     // post method for adding a new shelf
      addShelf:(shelf_name, shelf_desc, have_read, shelf_id, user_id)=>{
-      return(fetch)`${URL_PREFIX}/shelf`,{
+      return fetch(`${URL_PREFIX}/shelf`,{
         method:"POST",
         body:JSON.stringify({
           shelf_name, 
@@ -115,14 +115,8 @@ const Api = {
         headers:{
           "Content-Type": "application/json"
         }
-      }
-  },
-  // get method for getting a review
-    getReviews:()=>{
-      return fetch(`${URL_PREFIX}/${ol_key}`,{
-        method:"GET"
       })
-      },
+  },
     // get method for getting diary entries
     getDiary:()=>{
       return(fetch)`${URL_PREFIX}/review-from-token`,{
