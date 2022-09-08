@@ -153,7 +153,7 @@ const addReview = (review_text, plot_rating, character_rating, accessibility_rat
             <Route exact path="/users/:id" element={<Profile token={token} user={user} loggedIn={isLoggedIn} />}/>
             <Route exact path="/account" element={<Account user={user} loggedIn={isLoggedIn}/>}/>
             <Route exact path="/dashboard" element={<Dashboard user={user} loggedIn={isLoggedIn}/>}/>
-            <Route exact path="/shelves" element={<Shelves user={user} loggedIn={isLoggedIn}/>}/>
+            <Route exact path="/shelf" element={<Shelves user={user} loggedIn={isLoggedIn}/>}/>
 
           
             <Route exact path="/login" element={<Login userId={user.id} handleLogin={submitLoginHandle} loggedIn={isLoggedIn} />} />
