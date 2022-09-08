@@ -96,7 +96,7 @@ export default function FlexDirection() {
                
                 <Item>
                     <ImageList>
-                        <img sx={{ width: 25, height: 50 }} src={`https://images-na.ssl-images-amazon.com/images/I/716yWoZsqgL.jpg`}/>
+                        <img sx={{ width: 25, height: 50 }} src={`https://images-na.ssl-images-amazon.com/images/I/71OFqSRFDgL.jpg`}/>
                         <img sx={{ width: 25, height: 50 }} src={`https://images-na.ssl-images-amazon.com/images/I/91i056yWLiL.jpg`}/>
                     </ImageList>
                 </Item>
