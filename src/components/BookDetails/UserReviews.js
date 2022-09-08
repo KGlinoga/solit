@@ -4,29 +4,35 @@ import {useParams} from 'react-router-dom';
 import Box from '@mui/material/Box';
 import {useEffect, useState} from 'react';
 import Api from '../../utils/Api';
+// import { DiscFull } from '@mui/icons-material';
 
 
 function UserReviews() {
   // const [userId, setUserId] = useState("")
-  const[reviewLength, setReviewLength] = useState("")
-  const[reviewTitle, setReviewTitle] = useState('');
-  const[reviewAuthor, setReviewAuthor] =useState('');
-  const[reviewText, setReviewText] = useState('');
+  const[reviews, setReviews] = useState("")
+  // const[reviewTitle, setReviewTitle] = useState('');
+  // const[reviewAuthor, setReviewAuthor] =useState('');
+  // const[reviewText, setReviewText] = useState('');
 
-  const {ol_key} = useParams("")
+  const {id} = useParams();
+  // console.log(id)
 
   useEffect(()=>{
-    Api.getReviews(ol_key).then(res => res.json().then(data => {
-      setReviewLength(data.length)
-      setReviewTitle(data.review_title);
-      setReviewAuthor(data.review_author);
-      setReviewText(data.review_text);
+    Api.getReviews(id).then(res => res.json().then(data => {
+      setReviews(data);
+      // console.log(data)
+      // setReviewTitle(data.review_title);
+      // setReviewAuthor(data.review_author);
+      // setReviewText(data.review_text);
 
     }))
-  })
-  return (
-    <div style={{ width: '100%' }}>
+  }, [id])
 
+  return (
+    <div>
+    {reviews.length!==0?(
+    <div style={{ width: '100%' }}>
+      {reviews.map((review) => (
       <Box id="reviewUserName"
         sx={{
           display: 'inline-flex',
@@ -44,7 +50,7 @@ function UserReviews() {
           fontWeight: '200',
         }}
       >
-        {"BookLover"}
+        {review.review_author}
         <Box id="reviewText"
         sx={{
           display: 'inline-flex',
@@ -62,9 +68,17 @@ function UserReviews() {
           fontWeight: '200',
         }}
       >
-        {"Sample text for user review: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. "}
+        {review.review_text}
       </Box>
       </Box>
+        ))} 
+    </div>
+    ):(
+      <div>
+        <h4>No reviews yet! Be the first!
+        </h4>
+      </div>
+    )}
     </div>
   );
 }
