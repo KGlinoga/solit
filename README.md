@@ -1,70 +1,80 @@
-# Getting Started with Create React App
+# soLit
+## For booklovers everywhere!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+The Front End for the So Lit app. 
+See this GitHub Repo for the Back End: 
+https://github.com/KGlinoga/solit-backend
 
-In the project directory, you can run:
+### 
 
-### `npm start`
+## Usage
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Users will be taken to a website that prompts for their login information or prompts them to sign up. Afterwards, Users will be taken to a homepage where they can see the top books on the New York best-sellers list. Users can also search for a specific book in the search bar and it will display the book information along with all the reviews attached to it. User can add books to their shelves and also review books on their shelf. 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features
 
-### `npm test`
+### Features include:
+### Login/Logout/Sign-up functionality
+### Submitting User Input (user leaves reviews on books and user can add books to their shelf)
+### Uploading images (user can add a profile picture) 
+### User can use search-bar to specifically search for books
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies 
 
-### `npm run build`
+### This user interface was built with React and incorporates the following technologies: 
+- Google Fonts
+- Material UI
+- Cloudinary
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### No special installation steps are necessary.  Simply visit the deployed website, create an account and start reviewing books!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Netlify was used to do a final deployment.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Screenshots
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Home Page
+<img width="1218" alt="Screen Shot 2022-09-07 at 7 42 50 PM" src="https://user-images.githubusercontent.com/28368622/189022037-9424f4bb-0d63-47d9-99a1-dff2dbcfe5f2.png">
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Create an Account Page
+<img width="1218" alt="Screen Shot 2022-09-07 at 7 43 46 PM" src="https://user-images.githubusercontent.com/28368622/189022158-9fb8b21b-19ed-4071-987c-71a757566fd6.png">
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Sign In Page
+<img width="1218" alt="Screen Shot 2022-09-07 at 7 43 11 PM" src="https://user-images.githubusercontent.com/28368622/189022087-c15d28ff-4113-4c78-83ba-739c00d503e8.png">
 
-## Learn More
+Add a profile picture with Cloudinary!
+<img width="1218" alt="Screen Shot 2022-09-07 at 7 44 35 PM" src="https://user-images.githubusercontent.com/28368622/189022273-793b8562-a7d7-4fe1-b43e-1a49878ad15d.png">
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Individual Book Page
+<img width="955" alt="Screen Shot 2022-09-07 at 7 45 15 PM" src="https://user-images.githubusercontent.com/28368622/189022359-95df737d-8d6e-42b2-9692-18da11d5c86a.png">
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+## Deployed Link
+candid-pithivier-78a46d.netlify.app
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+## Credits
+### Tutoring, WW3 Schools, TA's, Stack Overflow, Slack AskBot, and the following:
+### https://cloudinary.com/
+###https://blog.logrocket.com/handling-images-with-cloudinary-in-react/
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Members 
 
-### Advanced Configuration
+### soLit Team Members: 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Asiya Ahmed - https://github.com/AsiyahAA
+### Annie Hosch - https://github.com/anniech1
+### Kristina Glinoga - https://github.com/KGlinoga
+### Lesli Patino - https://github.com/lpatino1
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## License
+## [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
