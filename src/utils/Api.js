@@ -1,6 +1,6 @@
 
-const URL_PREFIX= "https://solit-backend.herokuapp.com"
-// const URL_PREFIX ="http://localhost:3001"
+// const URL_PREFIX= "https://solit-backend.herokuapp.com"
+const URL_PREFIX ="http://localhost:3001"
 
 const Api = {
   checkToken:token=>{
@@ -61,24 +61,23 @@ const Api = {
   },
   // get method for getting a review
     getReviews:(ol_key)=>{
-      return fetch(`${URL_PREFIX}/${ol_key}`,{
+      return fetch(`${URL_PREFIX}/api/review/${ol_key}`,{
         method:"GET"
       })
       },
     //insert new method
     // post method for adding a new review
-    addReview:(review_text, plot_rating, character_rating, accessibility_rating, pacing_rating, ol_key, review_title, review_author,token)=>{
-      return fetch(`${URL_PREFIX}/review-from-token`,{
+    addReview:(review_title, review_author, review_text, plot_rating, character_rating,accessibility_rating, pacing_rating, ol_key, token)=>{
+      return fetch(`${URL_PREFIX}/api/review/${ol_key}`,{
         method:"POST",
         body:JSON.stringify({
+          review_title,
+          review_author,
           review_text,
           plot_rating,
           character_rating,
-          accessibility_rating, 
-          pacing_rating, 
-          ol_key, 
-          review_title, 
-          review_author
+          accessibility_rating,
+          pacing_rating
         }),
         headers:{
           "Content-Type": "application/json",

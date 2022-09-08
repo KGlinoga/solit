@@ -10,10 +10,12 @@ import Stack from '@mui/material/Stack';
 import { Grid } from "@mui/material";
 // import AddReview from './Page';
 import Api from '../../utils/Api';
-import {useParams} from 'react-router';
+import {useParams} from 'react-router-dom';
+import { IntegrationInstructionsRounded } from "@mui/icons-material";
 
 const Form = () => {
-  const {ol_key} = useParams();
+  const {id} = useParams();
+
   //set review text, ratings, book id, and user id
   const [review_text, setReviewText] = useState("")
   const [plot_rating, setPlotRating] = useState("")
@@ -23,6 +25,14 @@ const Form = () => {
   //these next two are currently not in our db but if they are added i'll uncomment them out
   const [review_title, setReviewTitle] = useState("")
   const [review_author, setReviewAuthor] = useState("")
+
+  // console.log(review_text)
+  // console.log(plot_rating)
+  // console.log(character_rating)
+  // console.log(accessibility_rating)
+  // console.log(pacing_rating)
+  // console.log(review_author)
+  // console.log(review_title)
   // do i need to make useStates for these two? or do they automatically get associated with the rest of the props?
 
 
@@ -34,11 +44,10 @@ const Form = () => {
     // 
     e.preventDefault();
     
-
-    //get functionality
-    
+    console.log({id});
+    let token =  localStorage.getItem('token');
     //post functionality
-    Api.addReview(review_text, plot_rating, character_rating, accessibility_rating, pacing_rating, ol_key, review_title, review_author)
+    Api.addReview( review_title, review_author, review_text, plot_rating, character_rating, accessibility_rating,pacing_rating,id, token)
 
     //response.id
   }
@@ -70,6 +79,7 @@ const Form = () => {
       label: '🔥🔥🔥',
     }
   ];
+
   // function valuetext(value: number) {
   //   return `${value}°C`;
   // }
@@ -107,11 +117,11 @@ const Form = () => {
             <Slider
               aria-label="Custom marks"
               defaultValue={0}
-              //  getAriaValueText={valuetext}
+              // getAriaValueText={valuetext}
               step={20}
               valueLabelDisplay="auto"
               marks={marks}
-              value={plot_rating} onChange={e => setPlotRating(e.target.value)}
+              value={+plot_rating} onChange={e => setPlotRating(e.target.value)}
             />
             <Typography id="track-false-slider" gutterBottom>
               Characters
@@ -123,7 +133,7 @@ const Form = () => {
               step={20}
               valueLabelDisplay="auto"
               marks={marks}
-              value={character_rating} onChange={e => setCharacterRating(e.target.value)}
+              value={+character_rating} onChange={e => setCharacterRating(e.target.value)}
             />
             <Typography id="track-false-slider" gutterBottom>
               Accessibility
@@ -135,7 +145,7 @@ const Form = () => {
               step={20}
               valueLabelDisplay="auto"
               marks={marks}
-              value={accessibility_rating} onChange={e => setAccessibilityRating(e.target.value)}
+              value={+accessibility_rating} onChange={e => setAccessibilityRating(e.target.value)}
             />
             <Typography id="track-false-slider" gutterBottom>
               Pacing
@@ -147,7 +157,7 @@ const Form = () => {
               step={20}
               valueLabelDisplay="auto"
               marks={marks}
-              value={pacing_rating} onChange={e => setPacingRating(e.target.value)}
+              value={+pacing_rating} onChange={e => setPacingRating(e.target.value)}
             />
           </Box>
 

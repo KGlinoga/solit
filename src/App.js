@@ -112,25 +112,6 @@ function authCheck (){
     setisLoggedIn(false);
   }
 
-const addReview = (review_text, plot_rating, character_rating, accessibility_rating, pacing_rating, review_title, review_author, book_id, userId) => {
-    Api.postReviewText(review_text, plot_rating, character_rating, accessibility_rating, pacing_rating, review_title, review_author, book_id, userId).then(res => {
-      if (!res.ok) {
-        setUser({ userId: 0, email: "" });
-        setToken("")
-        return;
-      }
-      return res.json()
-    }).then(data => {
-      console.log(data)
-      setUser({
-        id: data.user.id,
-        email: data.user.email,
-      })
-      setToken(data.token)
-      localStorage.setItem("token", data.token)
-
-    })
-  }
 
   return (
     <div>

@@ -18,14 +18,13 @@ const BookDetails = (props) => {
   const [loading, setLoading] = useState(false);
   const [book, setBook] = useState(null);
   const navigate = useNavigate();
-
+  // console.log({id});
   useEffect(() => {
     setLoading(true);
     async function getBookDetails(){
       try{
         const response = await fetch(`${URL}${id}.json`);
         const data = await response.json();
-        console.log(data);
 
         if(data){
           const { description, title, covers } = data;
