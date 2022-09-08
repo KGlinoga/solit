@@ -8,11 +8,12 @@ import Typography from '@mui/material/Typography';
 import Slider from '@mui/material/Slider';
 import Stack from '@mui/material/Stack';
 import { Grid } from "@mui/material";
-import AddReview from './Page';
+// import AddReview from './Page';
 import Api from '../../utils/Api';
 import {useParams} from 'react-router';
 
 const Form = () => {
+  const {ol_key} = useParams();
   //set review text, ratings, book id, and user id
   const [review_text, setReviewText] = useState("")
   const [plot_rating, setPlotRating] = useState("")
@@ -32,7 +33,7 @@ const Form = () => {
     // post independent of review, post book to our database so it exists and can have a review associated
     // 
     e.preventDefault();
-    const {ol_key} = useParams();
+    
 
     //get functionality
     

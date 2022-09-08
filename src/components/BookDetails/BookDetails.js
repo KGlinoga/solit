@@ -83,7 +83,7 @@ return (
                 <UserReviews/>
             </div>
             <div className="addReviewbtn">
-              <AddReview user={user} />
+              <AddReview />
             </div>
             <div>
 

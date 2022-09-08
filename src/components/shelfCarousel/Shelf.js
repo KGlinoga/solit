@@ -1,5 +1,6 @@
 import React from 'react';
-import Carousel from 'react-material-ui-carousel'
+// import Carousel from 'react-material-ui-carousel'
+import Carousel from 'better-react-carousel';
 import { Paper } from '@mui/material'
 // import { View, Image, StyleSheet } from 'react-native';
 
